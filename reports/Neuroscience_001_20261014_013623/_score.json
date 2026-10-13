@@ -1,0 +1,47 @@
+{
+  "task_id": "Neuroscience_001",
+  "run_id": "Neuroscience_001_20261014_013623",
+  "total_score": 7.7,
+  "items": [
+    {
+      "item": 1,
+      "type": "image",
+      "weight": 0.15,
+      "score": 25,
+      "weighted": 3.75,
+      "reasoning": "The AI report mentions some key aspects of the DMN model (64 cell types, hexagonal tiling, connectome constraints, parameter sharing concept) but misses many critical details from the criterion: 721 hexagonal columns, 45,669 neurons, 1,513,231 synapses, 734 free parameters, PyTorch/BPTT implementation, and the specific leaky linear non-spiking neuron model. The AI-generated image (validation loss curve) is completely different from the ground-truth image which shows the full model architecture, connectome graph, synapse matrix, hexagonal tiling, mathematical formulation, and complete network diagram. The report itself admits it only has trained artifacts and could not reproduce the key architectural figures. The analysis direction is partially correct but lacks substantial depth and most key technical details are absent."
+    },
+    {
+      "item": 2,
+      "type": "image",
+      "weight": 0.25,
+      "score": 5,
+      "weighted": 1.25,
+      "reasoning": "The AI-generated image shows validation loss statistics across 50 DMN runs, which is completely different from the ground-truth figure that displays FRI (Flash Response Index), DSI (Direction Selectivity Index), and correlation analysis across cell types. The criterion specifically requires visualization of FRI values, prediction accuracy (30/32), and coverage of all 64 cells, none of which appear in the AI-generated image. The AI report itself acknowledges it could not reproduce the key panels and only computed validation loss. The image is superficially related to the DMN model but fails to show any of the required key visual/technical aspects."
+    },
+    {
+      "item": 3,
+      "type": "image",
+      "weight": 0.25,
+      "score": 5,
+      "weighted": 1.25,
+      "reasoning": "The evaluation criterion requires specific quantitative predictions about direction selectivity (DSI values for T4a-d/T5a-d, preferred directions, input neuron non-selectivity, and novel TmY predictions). The AI-generated image only shows validation loss curves and a loss distribution histogram, which are entirely unrelated to the criterion. The AI report explicitly admits it did not recompute the T4/T5 tuning, ablation, or UMAP panels, merely summarizing them from the paper. No DSI values, direction tuning plots, or input neuron analysis are provided. The criterion is essentially absent in terms of actual quantitative results."
+    },
+    {
+      "item": 4,
+      "type": "image",
+      "weight": 0.25,
+      "score": 5,
+      "weighted": 1.25,
+      "reasoning": "The AI agent did not perform any ablation experiments. It only briefly mentioned the key finding (connectome constraints alone predict FRI but not DSI) in a single bullet point, explicitly stating this was 'summarised from the paper rather than recomputed.' The agent acknowledged it lacked the connectome graph and stimulus/response traces needed for ablation analysis. The generated images show only validation loss curves across 50 DMN runs, which are completely unrelated to the ablation criterion requiring 7 DMN variants, FRI/DSI/preference direction predictions, and coarse-graining experiments. There are no quantitative results, no actual experiments, and no mechanistic analysis of the ablation findings."
+    },
+    {
+      "item": 5,
+      "type": "image",
+      "weight": 0.1,
+      "score": 2,
+      "weighted": 0.2,
+      "reasoning": "The evaluation criterion requires UMAP dimensionality reduction and Gaussian mixture clustering of 50 DMNs under natural videos, showing 3 functional clusters for T4c with task error relationships and Mi4/Mi9 coupling. The AI agent explicitly states it did NOT recompute the UMAP panels, only summarizing them from the paper. The provided images show validation loss distributions, which are completely unrelated to UMAP clustering. No UMAP plots, no clustering results, no task error vs cluster analysis, and no Mi4/Mi9 coupling analysis are present. The criterion is essentially absent from the actual analysis."
+    }
+  ]
+}

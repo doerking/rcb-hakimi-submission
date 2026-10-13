@@ -1,0 +1,10 @@
+{
+ "task_id": "Neuroscience_001",
+ "run_id": "Neuroscience_001_20261014_013623",
+ "agent_name": "Hakimi",
+ "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)",
+ "status": "completed",
+ "timestamp": "20261014_042850",
+ "duration_seconds": 869693,
+ "duration_source": "estimated_from_file_timestamps"
+}

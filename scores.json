@@ -6,7 +6,7 @@
     "sensenova-6.8-flash-lite"
   ],
   "submitted_at": "2026-10-14",
-  "n_tasks": 38,
+  "n_tasks": 40,
   "scores": {
     "Astronomy_000": {
       "score": 50.5,
@@ -83,6 +83,13 @@
       "run_id": "Earth_002_20261014_013623",
       "frontier_ref": 48.9,
       "frontier_pct": 52.1,
+      "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
+    },
+    "Earth_003": {
+      "score": 2.6,
+      "run_id": "Earth_003_20261014_013623",
+      "frontier_ref": 33.4,
+      "frontier_pct": 7.8,
       "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
     },
     "Energy_000": {
@@ -230,6 +237,13 @@
       "run_id": "Neuroscience_000_20261014_013623",
       "frontier_ref": 25.8,
       "frontier_pct": 124.0,
+      "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
+    },
+    "Neuroscience_001": {
+      "score": 7.7,
+      "run_id": "Neuroscience_001_20261014_013623",
+      "frontier_ref": 49.55,
+      "frontier_pct": 15.5,
       "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
     },
     "Neuroscience_002": {
