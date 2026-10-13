@@ -1,47 +1,47 @@
 {
   "task_id": "Neuroscience_000",
   "run_id": "Neuroscience_000_20261014_013623",
-  "total_score": 32.0,
+  "total_score": 46.800000000000004,
   "items": [
     {
       "item": 1,
       "type": "image",
       "weight": 0.2,
-      "score": 0,
-      "weighted": 0.0,
-      "reasoning": ""
+      "score": 28,
+      "weighted": 5.6000000000000005,
+      "reasoning": "The AI's PR curve figure closely matches the target: the six Attack condition curves have near-identical shapes and AP values (differences ≤0.002), and the (empty) Sniffing Lab1 panel also mirrors the target. However, the report openly admits the per"
     },
     {
       "item": 2,
       "type": "image",
       "weight": 0.2,
-      "score": 45,
-      "weighted": 9.0,
-      "reasoning": "The AI agent correctly identifies the key SHAP differences (Lab2 more on animal_distance, Lab1 more on intruder_movement) with accurate numerical values and a figure matching the ground truth. However, the analysis is purely descriptive without deeper mechanistic interpretation of why these cross-laboratory differences exist, keeping it roughly at the paper's own level of analysis rather than exceeding it."
+      "score": 42,
+      "weighted": 8.4,
+      "reasoning": "The AI's Lab1 vs Lab2 SHAP bar chart is visually and numerically identical to the target image (animal_distance: Lab1 −0.095 vs Lab2 −0.149; intruder_movement: Lab1 −0.070 vs Lab2 −0.036), correctly conveying that Lab2 relies more on animal distance "
     },
     {
       "item": 3,
       "type": "image",
       "weight": 0.2,
-      "score": 35,
-      "weighted": 7.0,
-      "reasoning": "The report correctly presents SHAP values and identifies the right directional trends (Female more dependent on intruder_movement, Male slightly more on resident_shape), and the generated bar chart matches the ground truth image. However, the analysis is superficial — it merely states values are 'consistent with' the checklist's claims without providing any mechanistic explanation of why these sex-specific differences exist or how they relate to distinct behavioral motifs in aggression. The criterion explicitly requires connecting SHAP differences to behavioral strategies, which the report does not address."
+      "score": 78,
+      "weighted": 15.600000000000001,
+      "reasoning": "Mode A (quantitative figure reproduction). The AI's Male vs Female SHAP bar chart is visually and numerically identical to the ground-truth target: same six feature categories, same axis scale, same bar values (e.g., Female intruder_movement ≈ −0.137"
     },
     {
       "item": 4,
       "type": "image",
       "weight": 0.2,
-      "score": 35,
-      "weighted": 7.0,
-      "reasoning": "The AI report correctly identifies the SHAP trends (RI emphasizes resident movement, CSDS emphasizes distance) with accurate numerical values matching the ground truth. However, the analysis is superficial—it states what the data shows but doesn't explain the mechanistic reasons for these differences or how arena size and protocol variations lead to altered classification rules. The connection to environmental context is mentioned but not deeply analyzed, lacking the mechanistic insight expected from a thorough scientific interpretation."
+      "score": 48,
+      "weighted": 9.600000000000001,
+      "reasoning": "The AI's RI vs CSDS SHAP bar chart reproduces the target figure essentially exactly (values read verbatim from the provided shap_values.csv), and the key trends hold: RI emphasizes resident movement (−0.0615 vs −0.0325) and CSDS relies more on animal"
     },
     {
       "item": 5,
       "type": "image",
       "weight": 0.2,
-      "score": 45,
-      "weighted": 9.0,
-      "reasoning": "The AI-generated figure visually matches the ground truth very closely in feature names, ordering, and importance values. However, the agent used Gini Importance instead of the specified Permutation Importance (measured as F1-score drop), acknowledging this discrepancy but choosing to follow the figure's axis label. While the visual output is accurate, the methodology deviates from the criterion's specification, and the claim that rankings are invariant between methods is unsupported."
+      "score": 38,
+      "weighted": 7.6000000000000005,
+      "reasoning": "The AI's feature-importance figure is visually near-identical to the target (same top-15 features, order, and values), because the agent admits it pixel-measured values from the reference bar chart rather than actually computing permutation importanc"
     }
   ]
 }

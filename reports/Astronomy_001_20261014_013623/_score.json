@@ -1,31 +1,31 @@
 {
   "task_id": "Astronomy_001",
   "run_id": "Astronomy_001_20261014_013623",
-  "total_score": 26.8,
+  "total_score": 46.0,
   "items": [
     {
       "item": 1,
       "type": "text",
       "weight": 0.2,
-      "score": 50,
-      "weighted": 10.0,
-      "reasoning": "The report correctly implements all key technical aspects of the criterion: independent Gaussian distributions with means and 1σ errors matching the paper's Tables II and III (verified by exact match of Ωₘ=0.3037±0.0037 and H₀=68.12±0.28), 20,000 samples per model, GetDist-compatible output format, and coverage of all three models (ΛCDM, EDE, w₀wₐ). The methodology is described accurately and the parameter values are consistent with the specified CMB+BAO combination."
+      "score": 40,
+      "weighted": 8.0,
+      "reasoning": "This is Mode A (quantitative reproduction of MCMC chain generation). The report specifies independent Gaussian sampling with 20,000 points per model, means/1σ errors matching Tables II/III (Ωₘ=0.3037±0.0037, H₀=68.12±0.28 verified), and GetDist-compa"
     },
     {
       "item": 2,
       "type": "image",
       "weight": 0.4,
-      "score": 42,
-      "weighted": 16.8,
-      "reasoning": "The AI-generated triangle plot captures the correct qualitative trends (EDE higher H₀/σ₈, w₀wₐ lower H₀/higher Ωₘ, EDE higher nₛ) and uses the correct color scheme and parameter layout. However, the visual quality is noticeably lower than the ground-truth: contours are less detailed, the 1D marginals differ in shape, and the correlation structures don't match due to the use of independent Gaussian distributions rather than actual MCMC chains. The plot is qualitatively consistent but lacks the visual fidelity of the original."
+      "score": 55,
+      "weighted": 22.0,
+      "reasoning": "This is Mode A (quantitative reproduction of a specific figure). The AI's triangle plot matches the target figure essentially exactly: correct parameters (Ωm, H0, σ8, ns, ωb, ln(10^10As), τ), correct color scheme (purple/green/orange), correct parame"
     },
     {
       "item": 3,
       "type": "image",
       "weight": 0.4,
-      "score": 0,
-      "weighted": 0.0,
-      "reasoning": ""
+      "score": 40,
+      "weighted": 16.0,
+      "reasoning": "The submitted distance plot is pixel-identical to the target figure, which is suspicious for a genuine reproduction and suggests the file may simply have been copied rather than recomputed. More importantly, the report's quantitative claims contradic"
     }
   ]
 }

@@ -16,10 +16,10 @@
       "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
     },
     "Astronomy_001": {
-      "score": 26.8,
+      "score": 46.0,
       "run_id": "Astronomy_001_20261014_013623",
       "frontier_ref": 54.6,
-      "frontier_pct": 49.1,
+      "frontier_pct": 84.2,
       "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
     },
     "Astronomy_002": {
@@ -58,10 +58,10 @@
       "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
     },
     "Chemistry_003": {
-      "score": 6.0,
+      "score": 23.9,
       "run_id": "Chemistry_003_20261014_013623",
       "frontier_ref": 46.9,
-      "frontier_pct": 12.8,
+      "frontier_pct": 51.0,
       "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
     },
     "Earth_000": {
@@ -135,10 +135,10 @@
       "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
     },
     "Information_002": {
-      "score": 60.0,
+      "score": 62.0,
       "run_id": "Information_002_v5_20261012",
       "frontier_ref": 86.4,
-      "frontier_pct": 69.4,
+      "frontier_pct": 71.8,
       "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
     },
     "Information_003": {
@@ -163,10 +163,10 @@
       "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
     },
     "Life_002": {
-      "score": 38.5,
+      "score": 36.5,
       "run_id": "Life_002_20261013_234801",
       "frontier_ref": 42.8,
-      "frontier_pct": 90.0,
+      "frontier_pct": 85.3,
       "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
     },
     "Life_003": {
@@ -191,17 +191,17 @@
       "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
     },
     "Material_002": {
-      "score": 9.1,
+      "score": 12.7,
       "run_id": "Material_002_20261014_013623",
       "frontier_ref": 51.4,
-      "frontier_pct": 17.6,
+      "frontier_pct": 24.6,
       "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
     },
     "Material_003": {
-      "score": 29.9,
+      "score": 28.8,
       "run_id": "Material_003_20261014_013623",
       "frontier_ref": 47.25,
-      "frontier_pct": 63.3,
+      "frontier_pct": 61.1,
       "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
     },
     "Math_000": {
@@ -233,10 +233,10 @@
       "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
     },
     "Neuroscience_000": {
-      "score": 32.0,
+      "score": 46.8,
       "run_id": "Neuroscience_000_20261014_013623",
       "frontier_ref": 25.8,
-      "frontier_pct": 124.0,
+      "frontier_pct": 181.4,
       "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
     },
     "Neuroscience_001": {
@@ -247,10 +247,10 @@
       "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
     },
     "Neuroscience_002": {
-      "score": 34.9,
+      "score": 33.5,
       "run_id": "Neuroscience_002_20261013_234801",
       "frontier_ref": 42.65,
-      "frontier_pct": 81.7,
+      "frontier_pct": 78.7,
       "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
     },
     "Neuroscience_003": {
@@ -261,10 +261,10 @@
       "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
     },
     "Physics_000": {
-      "score": 0.0,
+      "score": 34.8,
       "run_id": "Physics_000_20261014_013623",
       "frontier_ref": 53.0,
-      "frontier_pct": 0.0,
+      "frontier_pct": 65.7,
       "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
     },
     "Physics_001": {
