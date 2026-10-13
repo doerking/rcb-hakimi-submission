@@ -1,0 +1,31 @@
+{
+  "task_id": "Math_000",
+  "run_id": "Math_000_20261013",
+  "total_score": 17.0,
+  "items": [
+    {
+      "item": 1,
+      "type": "text",
+      "weight": 0.15,
+      "score": 48,
+      "weighted": 7.199999999999999,
+      "reasoning": "The report correctly defines pseudo-depth (distance from bbox bottom to image bottom), explicitly identifies both scene priors (camera above ground, flat ground plane), and accurately explains the depth ordering relationship (closer objects have larger pseudo-depth values). All three key technical aspects from the criterion are addressed accurately and clearly, though the analysis depth is roughly comparable to what the original paper would describe without adding significant new insights."
+    },
+    {
+      "item": 2,
+      "type": "text",
+      "weight": 0.15,
+      "score": 42,
+      "weighted": 6.3,
+      "reasoning": "The report correctly describes all four key technical aspects of DCM (depth partitioning, same-level association, cascade propagation, IoU-only matching) and provides experimental validation. However, the mechanistic analysis is surface-level\u2014the explanation of why depth partitioning reduces ambiguity and handles occlusion is generic, and there is no deep exploration of theoretical underpinnings, edge cases, or failure modes. The analysis is accurate but lacks the depth expected from a rigorous paper."
+    },
+    {
+      "item": 3,
+      "type": "image",
+      "weight": 0.7,
+      "score": 5,
+      "weighted": 3.5,
+      "reasoning": "The AI-generated image shows a fundamentally different trend from the target image. The target image displays a monotonic decrease in tracking performance as depth levels increase (from ~0.54 at level 1 to ~0.46 at level 8), while the AI-generated image shows performance increasing up to an optimum at 4-6 levels before slightly decreasing. The starting values are also completely different (target starts at ~0.54, AI starts at ~0.48), and the ByteTrack representation differs significantly (flat red dashed line in target vs. increasing orange dashed line in AI). While the AI image aligns better with the textual criterion description, it fails to match the actual visual data from the original paper's figure."
+    }
+  ]
+}

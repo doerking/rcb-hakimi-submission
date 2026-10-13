@@ -6,7 +6,7 @@
     "sensenova-6.8-flash-lite"
   ],
   "submitted_at": "2026-10-14",
-  "n_tasks": 15,
+  "n_tasks": 27,
   "scores": {
     "Astronomy_000": {
       "score": 50.5,
@@ -20,6 +20,13 @@
       "run_id": "Astronomy_002_20261013",
       "frontier_ref": 35.3,
       "frontier_pct": 114.7,
+      "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
+    },
+    "Astronomy_003": {
+      "score": 49.6,
+      "run_id": "Astronomy_003_20261004_033502",
+      "frontier_ref": 62.0,
+      "frontier_pct": 80.0,
       "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
     },
     "Chemistry_000": {
@@ -57,6 +64,13 @@
       "frontier_pct": 72.2,
       "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
     },
+    "Energy_003": {
+      "score": 54.9,
+      "run_id": "Energy_003_20261006",
+      "frontier_ref": 61.4,
+      "frontier_pct": 89.4,
+      "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
+    },
     "Information_000": {
       "score": 47.6,
       "run_id": "Information_000_20261012",
@@ -78,6 +92,27 @@
       "frontier_pct": 69.4,
       "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
     },
+    "Information_003": {
+      "score": 30.3,
+      "run_id": "Information_003_20261012",
+      "frontier_ref": 49.0,
+      "frontier_pct": 61.8,
+      "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
+    },
+    "Life_000": {
+      "score": 34.4,
+      "run_id": "Life_000_20261012",
+      "frontier_ref": 43.6,
+      "frontier_pct": 78.9,
+      "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
+    },
+    "Life_001": {
+      "score": 20.1,
+      "run_id": "Life_001_v2_20261004_230355",
+      "frontier_ref": 43.4,
+      "frontier_pct": 46.3,
+      "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
+    },
     "Life_002": {
       "score": 38.5,
       "run_id": "Life_002_20261013_234801",
@@ -85,11 +120,39 @@
       "frontier_pct": 90.0,
       "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
     },
+    "Life_003": {
+      "score": 7.5,
+      "run_id": "Life_003_20261012",
+      "frontier_ref": 48.7,
+      "frontier_pct": 15.4,
+      "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
+    },
+    "Material_001": {
+      "score": 28.9,
+      "run_id": "Material_001_20261012",
+      "frontier_ref": 53.45,
+      "frontier_pct": 54.1,
+      "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
+    },
+    "Math_000": {
+      "score": 17.0,
+      "run_id": "Math_000_20261013",
+      "frontier_ref": 47.45,
+      "frontier_pct": 35.8,
+      "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
+    },
     "Math_001": {
       "score": 30.4,
       "run_id": "Math_001_20261013_232838",
       "frontier_ref": 57.1,
       "frontier_pct": 53.2,
+      "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
+    },
+    "Math_002": {
+      "score": 28.2,
+      "run_id": "Math_002_20261012",
+      "frontier_ref": 42.6,
+      "frontier_pct": 66.2,
       "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
     },
     "Math_003": {
@@ -111,6 +174,27 @@
       "run_id": "Neuroscience_003_20261013_234801",
       "frontier_ref": 50.78,
       "frontier_pct": 55.4,
+      "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
+    },
+    "Physics_001": {
+      "score": 14.3,
+      "run_id": "Physics_001_20261012",
+      "frontier_ref": 49.0,
+      "frontier_pct": 29.2,
+      "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
+    },
+    "Physics_002": {
+      "score": 46.5,
+      "run_id": "Physics_002_v2_20261004_230720",
+      "frontier_ref": 69.85,
+      "frontier_pct": 66.6,
+      "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
+    },
+    "Physics_003": {
+      "score": 37.6,
+      "run_id": "Physics_003_v2_20261004_225741",
+      "frontier_ref": 79.5,
+      "frontier_pct": 47.3,
       "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)"
     }
   }

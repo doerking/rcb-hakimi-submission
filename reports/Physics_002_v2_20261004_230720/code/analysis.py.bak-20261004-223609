@@ -1,0 +1,223 @@
+# -*- coding: utf-8 -*-
+"""Physics_002 — XEB + Mirror-Benchmark (MB) fidelity reproduction for RCS on arbitrary geometries.
+
+Estimators:
+  linear XEB :  F = D*<p_ideal>_meas - 1        (needs ideal amplitudes)
+  mirror/MB  :  F = (D*p_return - 1)/(D-1)      (return probability of the ideal bitstring; no amplitudes)
+Gate-count model: F_model = exp(-n2q * e2q),  n2q ~ N*d/2 (1 layer = N/2 two-qubit gates),
+  e2q fitted to the experimental points with a propagated 1-sigma band.
+"""
+import json, glob, os, re, csv, statistics
+from pathlib import Path
+
+import numpy as np
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+
+HERE = Path(__file__).resolve().parent.parent
+DATA = HERE / "data"
+OUT = HERE / "outputs"; OUT.mkdir(exist_ok=True)
+IMG = HERE / "report" / "images"; IMG.mkdir(parents=True, exist_ok=True)
+plt.rcParams.update({"font.size": 11, "figure.dpi": 110})
+
+
+def xeb_one(rdir, adir, tag, N):
+    c = json.load(open(rdir / f"{tag}_counts.json", encoding="utf-8"))
+    a = json.load(open(adir / f"{tag}_amplitudes.json", encoding="utf-8"))
+    D = 2 ** N; M = sum(c.values()); s = 0.0
+    for k, v in c.items():
+        amp = a.get(k)
+        if amp is not None:
+            s += v * abs(complex(amp.strip("()"))) ** 2
+    return D * s / M - 1.0
+
+
+def mb_one(rdir, tag, N):
+    c = json.load(open(rdir / f"{tag}_counts.json", encoding="utf-8"))
+    ib = json.load(open(rdir / f"{tag}_ideal_bitstring.json", encoding="utf-8"))
+    D = 2 ** N; M = sum(c.values())
+    # 理想 bitstring 喺 counts 里嘅键形态（tuple 或字符串）
+    for form in (str(tuple(ib)), str(tuple(map(int, ib))), "".join(map(str, ib))):
+        if form in c:
+            p_ret = c[form] / M
+            return (D * p_ret - 1.0) / (D - 1.0)
+    return None
+
+
+xeb_rows, mb_rows = [], []      # (N, d, r, F)
+for rdir in sorted(glob.glob(str(DATA / "results" / "*" / "*_XEB"))):
+    rdir = Path(rdir); cfg = rdir.name; group = rdir.parent.name
+    m = re.match(r"N(\d+)_d(\d+)_XEB", cfg)
+    if not m:
+        continue
+    N, dep = int(m.group(1)), int(m.group(2))
+    adir = DATA / "amplitudes" / group / cfg
+    if not adir.exists():
+        continue
+    for f in sorted(rdir.glob("*_XEB_counts.json")):
+        tag = f.name.replace("_counts.json", ""); r = int(re.search(r"_r(\d+)_", tag).group(1))
+        try:
+            xeb_rows.append((N, dep, r, xeb_one(rdir, adir, tag, N)))
+        except Exception:
+            pass
+
+for rdir in sorted(glob.glob(str(DATA / "results" / "*" / "*_MB"))):
+    rdir = Path(rdir); cfg = rdir.name
+    m = re.match(r"N(\d+)_d(\d+)_MB", cfg)
+    if not m:
+        continue
+    N, dep = int(m.group(1)), int(m.group(2))
+    for f in sorted(rdir.glob("*_MB_counts.json")):
+        tag = f.name.replace("_counts.json", ""); r = int(re.search(r"_r(\d+)_", tag).group(1))
+        try:
+            v = mb_one(rdir, tag, N)
+            if v is not None:
+                mb_rows.append((N, dep, r, v))
+        except Exception:
+            pass
+
+def agg(rows):
+    g = {}
+    for N, d, r, F in rows:
+        g.setdefault((N, d), []).append(F)
+    out = []
+    for (N, d), v in sorted(g.items()):
+        v = np.array(v); out.append((N, d, len(v), float(v.mean()),
+                                     float(v.std(ddof=1) / np.sqrt(len(v))) if len(v) > 1 else 0.0))
+    return out
+
+ax_sum = agg(xeb_rows)      # amplitudes up to N<=40
+mb_sum = agg(mb_rows)       # all N incl 56
+print(f"XEB instances={len(xeb_rows)} cfgs={len(ax_sum)} · MB instances={len(mb_rows)} cfgs={len(mb_sum)}")
+
+# ---------------------------------------------------------------- FIG 1: F vs depth (N=40), XEB + MB
+fig, ax = plt.subplots(figsize=(8.4, 5.4))
+d_x = sorted([s for s in ax_sum if s[0] == 40], key=lambda z: z[1])
+d_m = sorted([s for s in mb_sum if s[0] == 40], key=lambda z: z[1])
+ax.errorbar([x[1] for x in d_x], [x[3] for x in d_x], yerr=[x[4] for x in d_x], marker="o",
+            color="tab:blue", capsize=4, lw=1.8, label="linear XEB")
+ax.errorbar([x[1] for x in d_m], [x[3] for x in d_m], yerr=[x[4] for x in d_m], marker="^",
+            color="tab:red", capsize=4, lw=1.6, ls="--", label="Mirror benchmark (MB)")
+lx = np.array([x[1] for x in d_x]); ly = np.log([x[3] for x in d_x])
+s, i0 = np.polyfit(lx, ly, 1)
+xx = np.linspace(min(lx), max(lx), 100)
+ax.plot(xx, np.exp(i0 + s * xx), ":", color="gray", label=f"$F\\propto e^{{-d/{abs(1/s):.1f}}}$")
+ax.set_xlabel("circuit depth $d$"); ax.set_ylabel("fidelity $F$")
+ax.set_title("Fidelity vs depth (N=40) — two estimators")
+ax.grid(True, alpha=0.3); ax.legend()
+fig.tight_layout(); fig.savefig(IMG / "fidelity_vs_depth.png", dpi=170); plt.close(fig)
+
+# ---------------------------------------------------------------- FIG 2: F vs N (d=12), XEB + MB
+fig, ax = plt.subplots(figsize=(8.4, 5.4))
+n_x = sorted([s for s in ax_sum if s[1] == 12], key=lambda z: z[0])
+n_m = sorted([s for s in mb_sum if s[1] == 12], key=lambda z: z[0])
+ax.errorbar([x[0] for x in n_x], [x[3] for x in n_x], yerr=[x[4] for x in n_x], marker="s",
+            color="tab:blue", capsize=4, lw=1.8, label="linear XEB")
+ax.errorbar([x[0] for x in n_m], [x[3] for x in n_m], yerr=[x[4] for x in n_m], marker="D",
+            color="tab:red", capsize=4, lw=1.6, ls="--", label="Mirror benchmark (MB)")
+ax.set_xlabel("qubits $N$"); ax.set_ylabel("fidelity $F$")
+ax.set_title("Fidelity vs system size (depth 12) — two estimators")
+ax.grid(True, alpha=0.3); ax.legend()
+fig.tight_layout(); fig.savefig(IMG / "fidelity_vs_N.png", dpi=170); plt.close(fig)
+
+# ---------------------------------------------------------------- FIG 3: N=56 depth trend (MB) + N40
+fig, ax = plt.subplots(figsize=(8.4, 5.4))
+m56 = sorted([s for s in mb_sum if s[0] == 56], key=lambda z: z[1])
+ax.errorbar([x[1] for x in m56], [x[3] for x in m56], yerr=[x[4] for x in m56], marker="v",
+            color="tab:green", capsize=4, lw=1.8, label="N=56 (MB)")
+ax.errorbar([x[1] for x in d_m], [x[3] for x in d_m], yerr=[x[4] for x in d_m], marker="^",
+            color="tab:red", capsize=4, lw=1.4, ls="--", label="N=40 (MB)")
+ax.set_xlabel("circuit depth $d$"); ax.set_ylabel("fidelity $F$")
+ax.set_title("Larger system: fidelity vs depth (N=56, incl. depth-24 mirror)")
+ax.grid(True, alpha=0.3); ax.legend()
+fig.tight_layout(); fig.savefig(IMG / "fidelity_vs_depth_N56.png", dpi=170); plt.close(fig)
+
+# ---------------------------------------------------------------- FIG 4: gate-count model + 1sigma
+fig, ax = plt.subplots(figsize=(8.4, 5.4))
+pts = [(N, d, mean, sem) for (N, d, n, mean, sem) in ax_sum]
+n2q = np.array([N * d / 2.0 for (N, d, m, s) in pts], dtype=float)
+F = np.array([m for (N, d, m, s) in pts], dtype=float)
+# fit  log F = -e2q * n2q
+A = np.vstack([-n2q, np.ones_like(n2q)]).T
+(e2q, logc), res, *_ = np.linalg.lstsq(A, np.log(F), rcond=None)
+n2q_grid = np.linspace(0, n2q.max() * 1.1, 100)
+F_model = np.exp(logc - e2q * n2q_grid)
+ax.plot(n2q_grid, F_model, color="k", lw=1.8, label=f"model $e^{{-n_{{2q}}\\cdot e_{{2q}}}}$, $e_{{2q}}$={e2q*100:.2f}/gate")
+# 1-sigma band: from covariance of the fit
+try:
+    cov = np.linalg.inv(A.T @ A) * (res[0] / (len(n2q) - 2) if res.size else 1e-6)
+    se_log = np.sqrt(cov[0, 0] * n2q_grid ** 2 + cov[1, 1] + 2 * n2q_grid * cov[0, 1])
+    ax.fill_between(n2q_grid, np.exp(logc - e2q * n2q_grid - se_log),
+                    np.exp(logc - e2q * n2q_grid + se_log), color="gray", alpha=0.25, label=r"model $\pm1\sigma$")
+except Exception:
+    pass
+ax.errorbar(n2q, F, yerr=[s for (N, d, m, s) in pts], fmt="o", color="tab:blue", capsize=3, label="experiment")
+ax.set_xlabel("two-qubit gate count  $n_{2q}\\approx N d/2$")
+ax.set_ylabel("fidelity $F$")
+ax.set_title("Gate-count error-propagation model vs experiment")
+ax.grid(True, alpha=0.3); ax.legend()
+fig.tight_layout(); fig.savefig(IMG / "gate_count_model.png", dpi=170); plt.close(fig)
+
+# ---------------------------------------------------------------- FIG 5: counts-weighted XEB (N=40 verification)
+fig, ax = plt.subplots(figsize=(8.4, 5.4))
+ax.errorbar([x[1] for x in d_x], [x[3] for x in d_x], yerr=[x[4] for x in d_x], marker="o",
+            color="tab:blue", capsize=4, lw=2.0)
+ax.set_xlabel("circuit depth $d$"); ax.set_ylabel("$F_{\\mathrm{XEB}}$")
+ax.set_title("Counts-weighted linear XEB — N=40 verification subset (mean ± s.e.m., 50 instances)")
+ax.grid(True, alpha=0.3)
+fig.tight_layout(); fig.savefig(IMG / "xeb_vs_depth_errorbar.png", dpi=170); plt.close(fig)
+
+# ---------------------------------------------------------------- FIG 6: estimators consistency
+fig, ax = plt.subplots(figsize=(6.4, 5.4))
+dx = {x[1]: x[3] for x in d_x}; dm = {x[1]: x[3] for x in d_m}
+common = sorted(set(dx) & set(dm))
+ax.scatter([dx[d] for d in common], [dm[d] for d in common], s=60, color="tab:purple")
+lo, hi = 0, max(common and [max(dx[d], dm[d]) for d in common]) * 1.1
+ax.plot([lo, hi], [lo, hi], "k--", lw=1)
+for d in common:
+    ax.annotate(f"d={d}", (dx[d], dm[d]), fontsize=9, xytext=(4, 4), textcoords="offset points")
+ax.set_xlabel("linear XEB fidelity"); ax.set_ylabel("MB (mirror) fidelity")
+ax.set_title("Estimator consistency (N=40)"); ax.grid(True, alpha=0.3)
+fig.tight_layout(); fig.savefig(IMG / "estimator_consistency.png", dpi=170); plt.close(fig)
+
+# ---------------------------------------------------------------- outputs
+with (OUT / "xeb_results.csv").open("w", newline="", encoding="utf-8") as fh:
+    w = csv.writer(fh); w.writerow(["N", "depth", "instance", "F"])
+    for r in xeb_rows:
+        w.writerow(list(r) + ["linear-XEB"])
+    for r in mb_rows:
+        w.writerow(list(r) + ["mirror-MB"])
+
+metrics = {
+    "task": "Physics_002",
+    "estimators": {"linear_XEB": "F = D*<p_ideal>-1", "mirror_MB": "F = (D*p_return-1)/(D-1)"},
+    "n_xeb_instances": len(xeb_rows), "n_mb_instances": len(mb_rows),
+    "gate_count_model": {"e2q_per_gate": float(e2q), "n2q_proxy": "N*d/2"},
+    "summary_xeb": [{"N": N, "depth": d, "n": n, "F": m, "sem": s} for (N, d, n, m, s) in ax_sum],
+    "summary_mb": [{"N": N, "depth": d, "n": n, "F": m, "sem": s} for (N, d, n, m, s) in mb_sum],
+}
+(OUT / "metrics.json").write_text(json.dumps(metrics, indent=2), encoding="utf-8")
+
+print("\n===== SUMMARY =====")
+# —— 模型 vs 实验 量化吻合 ——
+resid = np.log(F) - (logc - e2q * n2q)
+rms = float(np.sqrt(np.mean(resid ** 2)))
+rel = np.abs(np.exp(resid) - 1)
+print(f"model agreement: RMS(log-resid)={rms:.3f} · max|rel err|={float(rel.max())*100:.1f}% · mean|rel err|={float(rel.mean())*100:.1f}%")
+# —— depth-24 mirror → depth-12 等效 ——
+f24 = [x[3] for x in mb_sum if x[0] == 56 and x[1] == 24]
+f12 = [x[3] for x in mb_sum if x[0] == 56 and x[1] == 12]
+if f24 and f12:
+    print(f"N=56: direct d12 MB={f12[0]:.3f} · d24-mirror→d12 equiv = sqrt({f24[0]:.3f}) = {f24[0]**0.5:.3f}")
+    metrics["mirror_depth12_equivalent_N56"] = {"direct_d12": f12[0], "from_d24_sqrt": f24[0] ** 0.5}
+metrics["gate_count_model"].update({"rms_log_residual": rms, "max_abs_rel_err": float(rel.max()),
+                                     "mean_abs_rel_err": float(rel.mean())})
+(OUT / "metrics.json").write_text(json.dumps(metrics, indent=2), encoding="utf-8")
+print("XEB N=40 depth:", [(x[1], round(x[3], 3)) for x in d_x])
+print("MB  N=40 depth:", [(x[1], round(x[3], 3)) for x in d_m])
+print("XEB d=12  N   :", [(x[0], round(x[3], 3)) for x in n_x])
+print("MB  d=12  N   :", [(x[0], round(x[3], 3)) for x in n_m])
+print("MB  N=56 depth:", [(x[1], round(x[3], 3)) for x in m56])
+print(f"gate-count model: e2q = {e2q*100:.3f}% per 2Q gate")
+print("figures ->", [p.name for p in sorted(IMG.glob('*.png'))])
