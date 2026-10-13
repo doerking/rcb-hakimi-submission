@@ -1,7 +1,10 @@
 {
-  "task_id": "Astronomy_002",
-  "run_id": "Astronomy_002_20261013",
-  "agent_name": "hakimi-rcb",
-  "model": "sensenova-6.8-flash-lite",
-  "timestamp": "2026-10-13T02:50:00Z"
+ "task_id": "Astronomy_002",
+ "run_id": "Astronomy_002_20261013",
+ "agent_name": "Hakimi",
+ "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)",
+ "status": "completed",
+ "timestamp": "20261013_025000",
+ "duration_seconds": 168,
+ "duration_source": "estimated_from_file_timestamps"
 }

@@ -1,8 +1,10 @@
 {
-  "task_id": "Energy_000",
-  "run_id": "Energy_000_20261012",
-  "timestamp": "20261012_235500",
-  "status": "done",
-  "agent_name": "Hakimi (manual)",
-  "agent_cmd": "true"
+ "task_id": "Energy_000",
+ "run_id": "Energy_000_20261012",
+ "agent_name": "Hakimi",
+ "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)",
+ "status": "completed",
+ "timestamp": "20261012_235500",
+ "duration_seconds": 729,
+ "duration_source": "estimated_from_file_timestamps"
 }
