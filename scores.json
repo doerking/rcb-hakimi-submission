@@ -1,0 +1,59 @@
+{
+  "agent_name": "Hakimi",
+  "agent_cmd": "pi + Hakimi (manual)",
+  "models": [
+    "deepseek/deepseek-flash",
+    "sensenova-6.8-flash-lite"
+  ],
+  "submitted_at": "2026-10-13",
+  "scores": {
+    "Chemistry_000": {
+      "score": 72.2,
+      "run_id": "Chemistry_000_20261013",
+      "frontier_pct": 181.4,
+      "frontier_ref": 39.8,
+      "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)",
+      "notes": "KA-GNN report with detailed Fourier-series KAN module analysis, ROC-AUC comparisons, standard deviation reporting, functional group interpretation."
+    },
+    "Chemistry_001": {
+      "score": 30.4,
+      "run_id": "Chemistry_001_20261013",
+      "frontier_pct": 133.3,
+      "frontier_ref": 22.8,
+      "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)",
+      "notes": "AlphaFold 3 diffusion-based docking; RMSD < 2.0 Å success rate 76.4%; docking comparison table across AutoDock Vina / Glide SP / GOLD."
+    },
+    "Energy_000": {
+      "score": 68.0,
+      "run_id": "Energy_000_20261012",
+      "frontier_pct": 132.0,
+      "frontier_ref": 51.5,
+      "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)",
+      "notes": "Lithium-ion battery parameter identification; LHS sampling + PyBaMM + ANN surrogate + GA optimization."
+    },
+    "Astronomy_002": {
+      "score": 40.5,
+      "run_id": "Astronomy_002_20261013",
+      "frontier_pct": 114.7,
+      "frontier_ref": 35.3,
+      "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)",
+      "notes": "Hubble Constant measurement via GLS distance network; 20 equations, 14 parameters, 6 dof; H0 = 73.48 ± 0.81."
+    },
+    "Information_002": {
+      "score": 60.2,
+      "run_id": "Information_002_v5_20261012",
+      "frontier_pct": 104.0,
+      "frontier_ref": 57.9,
+      "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)",
+      "notes": "Full 16-step Hartree-Fock derivation for AB-stacked MoTe2/WSe2 moire system (arXiv:2111.01152); step-by-step algebraic reproduction."
+    },
+    "Information_000": {
+      "score": 53.2,
+      "run_id": "Information_000_20261012",
+      "frontier_pct": 101.1,
+      "frontier_ref": 52.6,
+      "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)",
+      "notes": "Decoupled visual encoding reproduction: LaTeX OCR + Janus generation + Meme analysis."
+    }
+  }
+}

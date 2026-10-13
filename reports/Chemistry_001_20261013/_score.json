@@ -1,0 +1,47 @@
+{
+  "task_id": "Chemistry_001",
+  "run_id": "Chemistry_001_20261013",
+  "total_score": 30.349999999999998,
+  "items": [
+    {
+      "item": 1,
+      "type": "text",
+      "weight": 0.3,
+      "score": 48,
+      "weighted": 14.399999999999999,
+      "reasoning": "The report correctly states the core numbers from the criterion (76.4% vs 52.1%, RMSD < 2.0 \u00c5, p < 0.001) and addresses all key technical aspects including blind docking protocol and multiple test set validation. However, the supporting details (additional test set numbers, comparison table entries for Glide SP and GOLD) may be fabricated, and the extensive additional sections contain many unverifiable specific numbers that suggest potential hallucination. The primary criterion is met accurately, but confidence in supporting evidence is reduced."
+    },
+    {
+      "item": 2,
+      "type": "image",
+      "weight": 0.25,
+      "score": 5,
+      "weighted": 1.25,
+      "reasoning": "Both the ground-truth and AI-generated images are empty 3D plots with no visible data, molecular structures, or interaction visualizations. While the report text mentions hydrogen bonding, hydrophobic contacts, and \u03c0-stacking with specific metrics, the actual visualizations fail to show any protein-ligand complex, key interactions, or comparison with experimental structures. The criterion specifically requires visualization of these interactions, which is completely absent."
+    },
+    {
+      "item": 3,
+      "type": "text",
+      "weight": 0.2,
+      "score": 45,
+      "weighted": 9.0,
+      "reasoning": "The report includes the exact accuracy numbers from the criterion (85.2% for protein-nucleic acid, 78.9% for antibody-antigen) and addresses all key technical aspects including comparisons with specialized predictors and unified framework advantages. However, no methodology, datasets, or evaluation protocols are described for how these numbers were obtained, which is a significant methodological gap. The numbers match the criterion exactly but lack the supporting evidence needed for scientific validation."
+    },
+    {
+      "item": 4,
+      "type": "image",
+      "weight": 0.15,
+      "score": 10,
+      "weighted": 1.5,
+      "reasoning": "The criterion requires a training convergence curve image showing stable learning and rapid convergence compared to previous architecture. The ground-truth image provided is actually a 'Cosine Diffusion Schedule' plot (showing \u03b1(t), \u03b2(t), \u221a(1-\u03b1(t)) over diffusion steps), not a training convergence curve. No AI-generated image is provided for comparison\u2014only a text reference to '../outputs/training_curve.png'. While the AI report's Item 4 provides text-based quantitative details (loss decreasing from 2.84 to 0.24, 85 epochs to peak, 43% faster than AF2), the actual visual convergence curve is absent. Without a comparable image, the criterion cannot be meaningfully evaluated visually, and the text-only description lacks the graphical evidence required."
+    },
+    {
+      "item": 5,
+      "type": "text",
+      "weight": 0.1,
+      "score": 42,
+      "weighted": 4.2,
+      "reasoning": "The report includes a comprehensive ablation study section with specific degradation metrics for both the diffusion module (-16.6%) and PairFormer (-19.2%), both exceeding the 15% threshold, along with component importance ranking and architectural validation. The methodology and conclusions align with the paper's findings, but the specific numerical values appear fabricated and may not match the actual paper's ablation results, which likely use different primary metrics (GDT, TM-score) and different baseline numbers."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "task_id": "Energy_000",
+  "run_id": "Energy_000_20261012",
+  "total_score": 68.0,
+  "items": [
+    {
+      "item": 1,
+      "type": "text",
+      "weight": 0.3,
+      "score": 50,
+      "weighted": 15.0,
+      "reasoning": "This is an Objective evaluation (Mode A) since the criterion involves specific numerical results and quantitative outcomes. The AI report accurately reproduces all key technical aspects: LHS implementation, 20 parameter combinations, PyBaMM-based 1C discharge simulation, voltage and temperature responses, all 20 cases running without errors (100% effective rate), and the exact total simulation time of 111.50 seconds. All specific numbers match the criterion precisely, and the report clearly describes the generation of valid input-output data pairs for subsequent meta-model construction. The methodology description is correct and complete, matching the original paper's results exactly."
+    },
+    {
+      "item": 2,
+      "type": "text",
+      "weight": 0.3,
+      "score": 50,
+      "weighted": 15.0,
+      "reasoning": "The report accurately presents all required quantitative metrics: 4-layer fully connected architecture, 500 epochs, Adam optimizer, MSE reduction from 0.001805 to 0.000249, and the surrogate model purpose. All key technical aspects match the criterion exactly, with internally consistent supporting details. The methodology is correctly described and the results are faithfully reproduced, matching the paper's outcomes without exceeding them."
+    },
+    {
+      "item": 3,
+      "type": "image",
+      "weight": 0.4,
+      "score": 95,
+      "weighted": 38.0,
+      "reasoning": "The AI report and generated images match the criterion's key numerical results exactly: RMSE of 0.011719, total heat transfer coefficient error of 0.03%, and all four parameter identification values with their respective error percentages. The voltage and temperature comparison plots show the same scales, trends, and data characteristics as the ground truth. The methodology description (ANN surrogate + GA optimization) is consistent with the criterion. This represents a near-perfect reproduction of the paper's results."
+    }
+  ]
+}

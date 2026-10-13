@@ -1,0 +1,7 @@
+{
+  "paper_kinetic": "H_tau = [[ -h^2 k^2/2m_b + Δ_b ,  Δ_T,tau ],[ Δ_T,tau† , -h^2(k-tau κ)^2/2m_t + Δ_t + V_zt ]]  (负号 · 只有 top layer 有 κ 位移 · Δ_t=0)",
+  "auto_md_kinetic": "+h^2(k-tau κ)^2/2m_b 与 +h^2(k-tau κ)^2/2m_t（正号 · **两个 layer 都带 κ 位移**）—— 与论文 Eq 矛盾",
+  "verdict": "论文 Eq 为准；参考自动生成答案在 step-2 有符号/层依赖错误",
+  "T_symmetry_maxdiff_meV": 4.547473508864641e-13,
+  "planewave_dim": 14
+}
