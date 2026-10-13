@@ -1,0 +1,31 @@
+{
+  "task_id": "Astronomy_001",
+  "run_id": "Astronomy_001_20261014_013623",
+  "total_score": 26.8,
+  "items": [
+    {
+      "item": 1,
+      "type": "text",
+      "weight": 0.2,
+      "score": 50,
+      "weighted": 10.0,
+      "reasoning": "The report correctly implements all key technical aspects of the criterion: independent Gaussian distributions with means and 1σ errors matching the paper's Tables II and III (verified by exact match of Ωₘ=0.3037±0.0037 and H₀=68.12±0.28), 20,000 samples per model, GetDist-compatible output format, and coverage of all three models (ΛCDM, EDE, w₀wₐ). The methodology is described accurately and the parameter values are consistent with the specified CMB+BAO combination."
+    },
+    {
+      "item": 2,
+      "type": "image",
+      "weight": 0.4,
+      "score": 42,
+      "weighted": 16.8,
+      "reasoning": "The AI-generated triangle plot captures the correct qualitative trends (EDE higher H₀/σ₈, w₀wₐ lower H₀/higher Ωₘ, EDE higher nₛ) and uses the correct color scheme and parameter layout. However, the visual quality is noticeably lower than the ground-truth: contours are less detailed, the 1D marginals differ in shape, and the correlation structures don't match due to the use of independent Gaussian distributions rather than actual MCMC chains. The plot is qualitatively consistent but lacks the visual fidelity of the original."
+    },
+    {
+      "item": 3,
+      "type": "image",
+      "weight": 0.4,
+      "score": 0,
+      "weighted": 0.0,
+      "reasoning": ""
+    }
+  ]
+}

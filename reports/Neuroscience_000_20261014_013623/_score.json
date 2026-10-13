@@ -1,0 +1,47 @@
+{
+  "task_id": "Neuroscience_000",
+  "run_id": "Neuroscience_000_20261014_013623",
+  "total_score": 32.0,
+  "items": [
+    {
+      "item": 1,
+      "type": "image",
+      "weight": 0.2,
+      "score": 0,
+      "weighted": 0.0,
+      "reasoning": ""
+    },
+    {
+      "item": 2,
+      "type": "image",
+      "weight": 0.2,
+      "score": 45,
+      "weighted": 9.0,
+      "reasoning": "The AI agent correctly identifies the key SHAP differences (Lab2 more on animal_distance, Lab1 more on intruder_movement) with accurate numerical values and a figure matching the ground truth. However, the analysis is purely descriptive without deeper mechanistic interpretation of why these cross-laboratory differences exist, keeping it roughly at the paper's own level of analysis rather than exceeding it."
+    },
+    {
+      "item": 3,
+      "type": "image",
+      "weight": 0.2,
+      "score": 35,
+      "weighted": 7.0,
+      "reasoning": "The report correctly presents SHAP values and identifies the right directional trends (Female more dependent on intruder_movement, Male slightly more on resident_shape), and the generated bar chart matches the ground truth image. However, the analysis is superficial — it merely states values are 'consistent with' the checklist's claims without providing any mechanistic explanation of why these sex-specific differences exist or how they relate to distinct behavioral motifs in aggression. The criterion explicitly requires connecting SHAP differences to behavioral strategies, which the report does not address."
+    },
+    {
+      "item": 4,
+      "type": "image",
+      "weight": 0.2,
+      "score": 35,
+      "weighted": 7.0,
+      "reasoning": "The AI report correctly identifies the SHAP trends (RI emphasizes resident movement, CSDS emphasizes distance) with accurate numerical values matching the ground truth. However, the analysis is superficial—it states what the data shows but doesn't explain the mechanistic reasons for these differences or how arena size and protocol variations lead to altered classification rules. The connection to environmental context is mentioned but not deeply analyzed, lacking the mechanistic insight expected from a thorough scientific interpretation."
+    },
+    {
+      "item": 5,
+      "type": "image",
+      "weight": 0.2,
+      "score": 45,
+      "weighted": 9.0,
+      "reasoning": "The AI-generated figure visually matches the ground truth very closely in feature names, ordering, and importance values. However, the agent used Gini Importance instead of the specified Permutation Importance (measured as F1-score drop), acknowledging this discrepancy but choosing to follow the figure's axis label. While the visual output is accurate, the methodology deviates from the criterion's specification, and the claim that rankings are invariant between methods is unsupported."
+    }
+  ]
+}

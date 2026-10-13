@@ -1,0 +1,67 @@
+=== NAMIBIA ===
+N: 30, LCOH min=1.370, max=1.602, mean=1.482
+
+Lowest 5 hexes:
+  hex_015 lat=-26.27 lon=22.27 pv=0.80 wind=0.66 grid=11km ocean=89km lcoh=1.370
+  hex_010 lat=-24.55 lon=17.12 pv=0.84 wind=0.61 grid=47km ocean=422km lcoh=1.381
+  hex_020 lat=-19.90 lon=13.80 pv=0.81 wind=0.68 grid=124km ocean=352km lcoh=1.386
+  hex_007 lat=-19.57 lon=17.66 pv=0.83 wind=0.33 grid=40km ocean=52km lcoh=1.387
+  hex_028 lat=-27.15 lon=12.96 pv=0.70 wind=0.58 grid=113km ocean=64km lcoh=1.394
+
+Highest 5 hexes:
+  hex_011 lat=-17.88 lon=22.66 pv=0.73 wind=0.41 grid=232km ocean=116km lcoh=1.538
+  hex_027 lat=-28.47 lon=18.96 pv=0.80 wind=0.47 grid=133km ocean=308km lcoh=1.548
+  hex_000 lat=-19.71 lon=21.43 pv=0.66 wind=0.62 grid=148km ocean=402km lcoh=1.575
+  hex_008 lat=-27.46 lon=14.18 pv=0.72 wind=0.35 grid=30km ocean=339km lcoh=1.596
+  hex_021 lat=-24.75 lon=11.10 pv=0.72 wind=0.29 grid=125km ocean=438km lcoh=1.602
+
+=== AFRICA-WIDE ===
+De-risked LCOH: min=2.937 max=7.686 mean=5.274
+Commercial LCOH: min=5.777 max=10.615 mean=8.160
+
+Country summary (by mean de-risked LCOH, sorted):
+  TUNISIA: n=4 LCOH_dr=3.00-3.28 mean=3.15
+  MOROCCO: n=14 LCOH_dr=3.04-4.12 mean=3.43
+  ALGERIA: n=52 LCOH_dr=3.02-3.89 mean=3.47
+  LIBYA: n=36 LCOH_dr=3.23-4.13 mean=3.66
+  EGYPT: n=24 LCOH_dr=3.50-4.29 mean=3.86
+  W. SAHARA: n=1 LCOH_dr=3.96-3.96 mean=3.96
+  MAURITANIA: n=25 LCOH_dr=3.72-4.33 mean=4.04
+  NIGER: n=23 LCOH_dr=3.80-4.29 mean=4.08
+  MALI: n=28 LCOH_dr=3.77-4.52 mean=4.08
+  CHAD: n=26 LCOH_dr=3.84-4.76 mean=4.30
+  BURKINA FASO: n=5 LCOH_dr=4.21-4.48 mean=4.34
+  SENEGAL: n=5 LCOH_dr=4.34-4.53 mean=4.44
+  SUDAN: n=42 LCOH_dr=4.11-4.89 mean=4.49
+  NIGERIA: n=21 LCOH_dr=4.29-4.86 mean=4.56
+  BENIN: n=3 LCOH_dr=4.46-4.65 mean=4.57
+  GHANA: n=6 LCOH_dr=4.46-4.83 mean=4.65
+  GUINEA: n=5 LCOH_dr=4.56-4.76 mean=4.65
+  CÔTE D'IVOIRE: n=6 LCOH_dr=4.64-4.86 mean=4.73
+  SIERRA LEONE: n=1 LCOH_dr=4.74-4.74 mean=4.74
+  ERITREA: n=4 LCOH_dr=4.68-4.89 mean=4.75
+  LIBERIA: n=2 LCOH_dr=4.81-4.92 mean=4.86
+  CAMEROON: n=10 LCOH_dr=4.61-5.13 mean=4.90
+  DJIBOUTI: n=1 LCOH_dr=4.92-4.92 mean=4.92
+  CENTRAL AFRICAN REP.: n=13 LCOH_dr=4.76-5.15 mean=4.97
+  S. SUDAN: n=14 LCOH_dr=4.74-5.22 mean=4.98
+  ETHIOPIA: n=20 LCOH_dr=4.80-5.35 mean=5.06
+  SOMALILAND: n=4 LCOH_dr=5.14-5.24 mean=5.18
+  EQ. GUINEA: n=1 LCOH_dr=5.20-5.20 mean=5.20
+  GABON: n=5 LCOH_dr=5.22-5.33 mean=5.28
+  UGANDA: n=6 LCOH_dr=5.14-5.41 mean=5.30
+  SOMALIA: n=9 LCOH_dr=5.23-5.50 mean=5.38
+  CONGO: n=7 LCOH_dr=5.19-5.57 mean=5.39
+  KENYA: n=12 LCOH_dr=5.22-5.68 mean=5.41
+  BURUNDI: n=1 LCOH_dr=5.47-5.47 mean=5.47
+  DEM. REP. CONGO: n=47 LCOH_dr=5.13-5.91 mean=5.50
+  TANZANIA: n=18 LCOH_dr=5.52-6.13 mean=5.78
+  ANGOLA: n=27 LCOH_dr=5.65-6.18 mean=5.87
+  ZAMBIA: n=15 LCOH_dr=5.79-6.17 mean=6.01
+  MALAWI: n=2 LCOH_dr=6.03-6.11 mean=6.07
+  NAMIBIA: n=14 LCOH_dr=5.96-6.52 mean=6.21
+  ZIMBABWE: n=10 LCOH_dr=6.20-6.55 mean=6.33
+  BOTSWANA: n=11 LCOH_dr=6.24-6.48 mean=6.36
+  MOZAMBIQUE: n=18 LCOH_dr=6.14-6.74 mean=6.38
+  MADAGASCAR: n=12 LCOH_dr=6.52-7.00 mean=6.72
+  SOUTH AFRICA: n=32 LCOH_dr=6.41-7.07 mean=6.72

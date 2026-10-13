@@ -1,0 +1,47 @@
+{
+  "task_id": "Earth_001",
+  "run_id": "Earth_001_20261014_013623",
+  "total_score": 49.2,
+  "items": [
+    {
+      "item": 1,
+      "type": "text",
+      "weight": 0.22,
+      "score": 50,
+      "weighted": 11.0,
+      "reasoning": "The report accurately reproduces all five key technical aspects from the criterion: 832 records, 2000–2025 temporal coverage, 13 states, 98.38% overall accuracy (n=200), and 92%–100% field-level accuracy range. All numbers match the paper exactly with no deviation. The report also adds supplementary statistical validation (Wilson CI, Monte Carlo simulation) beyond the paper's scope, but the core criterion content is faithfully reproduced."
+    },
+    {
+      "item": 2,
+      "type": "image",
+      "weight": 0.2,
+      "score": 48,
+      "weighted": 9.600000000000001,
+      "reasoning": "The AI-generated choropleth correctly reproduces the western-state concentration pattern with California as the darkest state, followed by Colorado and Utah, and additional clusters in Texas and the northern Rockies. The fill intensity matches the ground-truth color scale and state-count ordering. However, the point overlay has technical flaws — points extend outside state boundaries (visible in the Pacific and Gulf of Mexico), whereas the ground-truth map keeps points tightly within state polygons. The report acknowledges simulated coordinates but the clipping implementation is imperfect. Overall, the spatial pattern is reproduced but with reduced point-overlay fidelity."
+    },
+    {
+      "item": 3,
+      "type": "image",
+      "weight": 0.2,
+      "score": 48,
+      "weighted": 9.600000000000001,
+      "reasoning": "The AI-generated annual trend figure closely matches the ground-truth image in terms of bar heights, state breakdown, and overall trend pattern (peak ~49 in 2003, trough ~12 in 2020, rebound to ~34 in 2024). The methodology is sound with direct data computation and cross-checks. The trend phases align with the paper's description. This is roughly comparable to the original paper's figure."
+    },
+    {
+      "item": 4,
+      "type": "image",
+      "weight": 0.19,
+      "score": 52,
+      "weighted": 9.88,
+      "reasoning": "The AI report correctly implements multi-label splitting and alias normalization as required by the criterion. The purpose-count table shows augment snowpack (516) and increase precipitation (426) together accounting for 81.4% of mentions, exceeding the 'over 70%' threshold. The AI-generated horizontal bar chart closely matches the ground truth image in categories, proportions, and visual style. The methodology is sound and the quantitative results are consistent with the criterion's description, though exact numbers cannot be independently verified against the original paper."
+    },
+    {
+      "item": 5,
+      "type": "image",
+      "weight": 0.19,
+      "score": 48,
+      "weighted": 9.120000000000001,
+      "reasoning": "The AI-generated heatmap (Image 5) is a near-exact reproduction of the ground truth (Image 1), with matching titles, axes, color scales, and intensity patterns. The report's numerical data (silver iodide ground=252, sodium iodide ground=108, etc.) is consistent with the visual intensities. The methodology is correctly described and the key findings align with the paper's operational patterns. This represents a faithful reproduction roughly comparable to the original."
+    }
+  ]
+}

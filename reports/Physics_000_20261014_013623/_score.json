@@ -1,0 +1,31 @@
+{
+  "task_id": "Physics_000",
+  "run_id": "Physics_000_20261014_013623",
+  "total_score": 0.0,
+  "items": [
+    {
+      "item": 1,
+      "type": "image",
+      "weight": 0.3,
+      "score": 0,
+      "weighted": 0.0,
+      "reasoning": ""
+    },
+    {
+      "item": 2,
+      "type": "image",
+      "weight": 0.4,
+      "score": 0,
+      "weighted": 0.0,
+      "reasoning": ""
+    },
+    {
+      "item": 3,
+      "type": "image",
+      "weight": 0.3,
+      "score": 0,
+      "weighted": 0.0,
+      "reasoning": ""
+    }
+  ]
+}

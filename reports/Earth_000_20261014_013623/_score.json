@@ -1,0 +1,39 @@
+{
+  "task_id": "Earth_000",
+  "run_id": "Earth_000_20261014_013623",
+  "total_score": 58.50000000000001,
+  "items": [
+    {
+      "item": 1,
+      "type": "text",
+      "weight": 0.4,
+      "score": 92,
+      "weighted": 36.800000000000004,
+      "reasoning": "All key quantitative metrics from the criterion are reproduced with exact accuracy: cumulative mass loss (-6542.5 ± 387 Gt), period-specific rates (-230.7 and -314.5 Gt yr⁻¹), acceleration (+36.3%), maximum annual loss (-548 ± 120 Gt in 2023), and the ice-sheet comparison (18% greater than Greenland, >2× Antarctic). The methodology is described as direct computation from GlaMBIE data, and the slightly more precise values suggest genuine calculation rather than transcription. This represents a near-perfect reproduction of all required quantitative results."
+    },
+    {
+      "item": 2,
+      "type": "image",
+      "weight": 0.1,
+      "score": 48,
+      "weighted": 4.800000000000001,
+      "reasoning": "The AI report accurately reproduces all key regional contribution metrics from the paper: Alaska (22.5% vs 22%), Arctic Canada (18.3% vs 20%), Greenland periphery (13.0% vs 13%), Southern Andes (9.6% vs 10%) for absolute contributions, and Central Europe (-38.8% vs -39%), Caucasus (-35.4% vs -35%), New Zealand (-30.3% vs -29%), North Asia (-23.7% vs -23%), Western Canada & USA (-23.3% vs -23%), Low latitudes (-22.7% vs -20%) for relative mass loss. The specific mass-change rates (Central Europe: -1.06±0.04, New Zealand: -0.96±0.08, Southern Andes: -0.93±0.22, Global: -0.41±0.02 m w.e. yr⁻¹) match the paper exactly. The AI-generated images (regional breakdown chart and Table 1 reproduction) clearly visualize these metrics with accurate data. The methodology is sound and the values are within rounding of the published paper."
+    },
+    {
+      "item": 3,
+      "type": "image",
+      "weight": 0.2,
+      "score": 2,
+      "weighted": 0.4,
+      "reasoning": "The AI-generated 'Extended Fig. 3' is supposed to reproduce the target figure showing regional mass-change rates by method, but it is completely empty — no data points are plotted, only the grid structure and labels are present. This is a fundamental failure in figure reproduction, as the actual scientific content (the plotted data with error bars and method-specific symbols) is entirely missing. The text claims to describe findings from the figure, but the image itself contains no data to support those claims."
+    },
+    {
+      "item": 4,
+      "type": "image",
+      "weight": 0.3,
+      "score": 55,
+      "weighted": 16.5,
+      "reasoning": "The AI report accurately reproduces all key quantitative results from the criterion (18.1 mm observed, 32-67 mm updated projection, 25-29% to 43-54% by 2100, 4%/9%/8% lower than previous IPCC reports, and regional divergences). The AI-generated Extended Fig. 5 is a reasonable approximation of the ground truth, capturing the essential message that observations diverge from low-emission projections, though it differs in layout details (projection offset, percentile representation). The text is accurate and complete, while the figure is functional but not an exact reproduction."
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+ "task_id": "Material_000",
+ "run_id": "Material_000_20261014_013623",
+ "agent_name": "Hakimi",
+ "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)",
+ "status": "completed",
+ "timestamp": "20261014_040003",
+ "duration_seconds": 866596,
+ "duration_source": "estimated_from_file_timestamps"
+}
