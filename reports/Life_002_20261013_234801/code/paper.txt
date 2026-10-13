@@ -1,0 +1,831 @@
+
+
+============================================================
+Page 1
+============================================================
+
+Nature Methods | Volume 22 | March 2025 | 469–472
+ 469
+nature methods
+https://doi.org/10.1038/s41592-025-02593-7
+Brief Communication
+Rapid and sensitive protein complex 
+alignment with Foldseek-Multimer
+ 
+Woosub Kim    1,2, Milot Mirdita    2, Eli Levy Karin3, Cameron L. M. Gilchrist2, 
+Hugo Schweke4,5, Johannes Söding6,7, Emmanuel D. Levy    4,5  & 
+Martin Steinegger    1,2,8,9 
+Advances in computational structure prediction will vastly augment the 
+hundreds of thousands of currently available protein complex structures. 
+Translating these into discoveries requires aligning them, which is 
+computationally prohibitive. Foldseek-Multimer computes complex 
+alignments from compatible chain-to-chain alignments, identified by 
+efficiently clustering their superposition vectors. Foldseek-Multimer is 
+3–4 orders of magnitudes faster than the gold standard, while producing 
+comparable alignments; this allows it to compare billions of complex pairs 
+in 11 h. Foldseek-Multimer is open-source software available at GitHub via 
+https://github.com/steineggerlab/foldseek/, https://search.foldseek.com/
+search/ and the BFMD database.
+The similarity between two protein complexes is reflected in their opti-
+mal structural alignment, which also dictates a pairing of their chains. 
+Aligning and comparing quaternary structures is essential for quantify-
+ing their structural diversity and identifying structural similarities and 
+changes across different conformations or homologs. Furthermore, it 
+is important to understanding protein function because many proteins 
+operate as complexes1.
+Recently, Foldseek2 has been developed as a fast structural aligner 
+to detect similarity between two single-chain proteins, expressed using 
+3Di, a designated alphabet for describing tertiary amino acid interac-
+tions. Using Foldseek allows searching for similar single-chain struc-
+tures in large databases, such as the AFDB3. However, because aligning 
+two complexes requires knowing the correct pairing of their chains, 
+Foldseek cannot be used directly to find the alignment between them.
+US-align4 is a structural aligner for various types of molecules, 
+including protein complexes. Its strategy for complex alignment is 
+TM-score maximization. As there is a factorial number of possible 
+assignments of chain pairings, US-align uses a greedy search heuristic 
+for proposing candidate assignments, which are refined by dynamic 
+programming. This heuristic was shown to make US-align up to five 
+times faster than the state-of-the-art MM-align5, while producing higher 
+scoring alignments, making US-align the gold standard for pairwise 
+complex alignment.
+Aiming to discover pairs of structurally conserved interfaces in 
+large databases, Dey et al. 6 developed QSalign for the detection of 
+similar homomeric complexes. QSalign saves computation time by 
+performing the full pairwise structural alignment only on complex 
+pairs prefiltered based on their sequence similarity, retaining pairs 
+with around 25% sequence identity or more. This speed-up comes 
+at the expense of sensitivity, limiting its ability to discover structur -
+ally similar pairs in the twilight zone or below. Despite this speed-up, 
+QSalign still took several months to conduct an all-versus-all search 
+encompassing about 100,000 complexes in the 3DComplex DB V5  
+(ref. 7) using 100 threads. An alternative approach to reduce computa-
+tional time during database search was presented by Guzenko et al.8, 
+who compared the shapes between two complexes through 3D Zernike 
+descriptors, avoiding the need to pair their chains. This approach can 
+query through hundreds of thousands of structures in less than a sec-
+ond. However, it can only discover global matches between molecules 
+of similar shapes, limiting its sensitivity, compared to chain-pairing 
+Received: 13 May 2024
+Accepted: 20 December 2024
+Published online: 5 February 2025
+ Check for updates
+1Interdisciplinary Program in Bioinformatics, Seoul National University, Seoul, Republic of Korea. 2School of Biological Sciences, Seoul National 
+University, Seoul, Republic of Korea. 3ELKMO, Copenhagen, Denmark. 4Department of Chemical and Structural Biology, Weizmann Institute of Science, 
+Rehovot, Israel. 5Department of Molecular and Cellular Biology, University of Geneva, Geneva, Switzerland. 6Quantitative and Computational Biology, 
+Max-Planck Institute for Multidisciplinary Sciences, Göttingen, Germany. 7Campus Institute Data Science (CIDAS), University of Göttingen, Göttingen, 
+Germany. 8Institute of Molecular Biology and Genetics, Seoul National University, Seoul, Republic of Korea. 9Artificial Intelligence Institute, Seoul National 
+University, Seoul, Republic of Korea.  e-mail: emmanuel.levy@unige.ch; martin.steinegger@snu.ac.kr
+
+============================================================
+Page 2
+============================================================
+
+Nature Methods | Volume 22 | March 2025 | 469–472 470
+Brief Communication https://doi.org/10.1038/s41592-025-02593-7
+(Methods) against the 3DComplexV7 database 7. Here, Foldseek-  
+Multimer was 3–4 orders of magnitude faster than US-align (Fig. 2b and 
+Supplementary Fig. 3) due to an additional speed-up by its prefilter.
+Recently, Altae-Tran et al.14 discovered the first CRISPR–Cas type 
+IV-A system with a specified interference mechanism in an environ -
+mental sample of Sulfitobacter  sp. JL08. Intrigued by their finding, 
+we predicted a part of its ribonucleoprotein complex structure using 
+ColabFold-AlphaFold-Multimer9,15. The prediction was of acceptable 
+quality (0.564 pTM), and we provided it as a query to Foldseek-Multimer 
+and US-align in a search against the Protein Data Bank (PDB)100 data-
+base (Methods). Foldseek-MM and Foldseek-MM-TM demonstrated 
+remarkable efficiency in comparing a query consisting of six chains 
+and spanning 1,843 amino acids against the 426,347 entries of PDB100. 
+These comparisons took only 27 s and 6 min, respectively, on a single 
+core of a server (23 s and 96 s on an 8-core MacBook Pro). By contrast, 
+it took US-align 13 days.
+Here, in addition to its fast core algorithm (Fig. 1 ), Foldseek-  
+Multimer gained further acceleration since PDB100 is a clustered 
+database, allowing it to search against the 343,785 representatives, 
+instead of all entries, and to expand the search only within promising 
+clusters (Methods). Foldseek-MM-TM and US-align scored five entries 
+above 0.65. These entries were the top ranks by Foldseek-MM, scor -
+ing above 0.5 but below 0.65 (Fig. 2c, rank indicated by ‘#’). All five 
+hits were from a recently reported type IV-A system in Pseudomonas 
+aeruginosa16, which belongs to a different class (Gammaproteobac -
+teria) than that of the query (Alphaproteobacteria). When examining 
+the best match, 7xg4, we found that Foldseek-Multimer could identify 
+similarity, despite low sequence similarity (11.1–19.8% sequence identity 
+and 19–33.3% sequence similarity using the BLOSUM62 substitution 
+matrix) between the six subunit pairs of Sulfitobacter sp. JL08 and 
+those of 7xg4. This provides further support for the previous identifi-
+cation of the Sulfitobacter sp. JL08 system as type IV-A and highlights 
+the potential of Foldseek-Multimer for investigating protein complex 
+structures predicted in distant organisms from environmental samples 
+(Supplementary Fig. 4: prediction quality effect).
+Next, we examined Foldseek-Multimer in an all-versus-all set -
+ting, using the 3DComplexV7 database 7 as it had been previously  
+analyzed in this setting using QSalign (Methods). QSalign relies on  
+the time-consuming Kpax17 structural alignment method, which pro-
+hibits it from conducting an exhaustive structural search. Thus, it first 
+identified around 58 million pairs, which shared sequence similarity 
+methods, like US-align and QSalign. Furthermore, it is unable to find 
+local matches within chains that do not match globally.
+The challenge of sensitively searching large databases is expected 
+to intensify as the computational prediction of protein complexes 
+using tools like AlphaFold-Multimer9 can now be performed on entire 
+proteomes to systematically predict complexes10– 12 and on sequences 
+from metagenomic samples. This will enrich our databases with a 
+plethora of structures, potentially in the millions, in the coming years.
+T o address the need for large-scale structural comparisons 
+between complexes, we developed Foldseek-Multimer (Fig. 1). Three 
+factors contribute to its speed: (1) using Foldseek for fast chain-to-chain 
+comparison, (2) describing chain-to-chain alignments as superposi -
+tion vectors, and using them to identify complex alignments by effi -
+cient clustering, and (3) utilizing clustered databases during searches. 
+Through benchmarks, we show that Foldseek-Multimer is: (1) nearly 
+as accurate as US-align, while being orders of magnitude faster,  
+(2) sensitive and suitable for metagenomic studies of complexes with 
+low sequence similarity to others, (3) capable of all-versus-all searches, 
+examining billions of complex pairs in 11 h.
+The quality of Foldseek-Multimer’s alignments was compared 
+to that of US-align on a benchmark of 931 pairs of protein complexes, 
+known to be structurally similar, using either tool to align them. 
+Foldseek-Multimer was run in two modes, differing in the algorithm 
+used for chain-to-chain alignment: 3Di+AA (Foldseek-MM) or TM-align13 
+(Foldseek-MM-TM). Both tools detected the vast majority (>95%) of 
+pairs as similar (US-align: 97.6%, Foldseek-MM-TM: 97.4%, Foldseek-MM: 
+95.8%), aligning them with a TM score ≥ 0.65, which is a cutoff found to 
+be optimal for detecting structural similarity among complexes6. Using 
+either mode, Foldseek-Multimer computed highly correlated TM scores 
+to those of US-align (Fig. 2a and Supplementary Fig. 2) and produced 
+the same chain pairing in >99% of the cases (see ‘Data availability’).
+We measured the runtime of the tools, breaking down the con -
+tribution of Foldseek-Multimer’s components to its speed. First, 
+given the task of computing 931 pairwise alignments, we observed a 
+speed-up of 1–2 orders of magnitude over US-align (Fig. 2b and Sup -
+plementary Fig. 3), reflecting the efficiency of the chain-to-chain align-
+ment (Foldseek-MM) and superposition clustering (Foldseek-MM 
+and Foldseek-MM-TM). The performance of Foldseek-MM-TM thus 
+highlights the key contribution of Foldseek-Multimer’s innovative use  
+of superpositions as an alternative to US-align’s global alignment.  
+Next, the tools queried each of the 677 complexes in the benchmark  
+a b c d eComplexes Compare chain pairs Superpose Cluster U and T Complex alignments
+Prefilter pass? Align Rotate Translate
+DBSCAN cluster
+Select best Score, sort, report
+TM score
+Targets
+Query
+(U) (T)A
+A
+A
+A
+A
+C
+C
+C
+C
+C
+B
+B
+B
+B
+B
+Iterative DBSCAN
+With increasing cluster radii (ε)
+Fig. 1 | Foldseek-Multimer schematic. a, Foldseek-Multimer allows fast querying 
+of input complex(es) against a large database, potentially containing millions 
+of targets. b, All chains from the query (gray) are compared to those of each 
+target (red). A prefilter allows to quickly reject non-matching chain pairs so the 
+full alignment is only applied to promising complex pairs. c, Foldseek-Multimer 
+represents each chain-to-chain alignment as a superposition, described by 
+rotations and translations, required for superposing the target chain onto the 
+query. In this simplified example, two chain-to-chain alignments (top, bottom) 
+are a rotation along one axis (yellow and green highlights), while one (middle) is a 
+rotation along a different axis. d, The complex-to-complex alignment is inferred 
+from chain-to-chain alignments as the superpositions of chain pairs in the 
+complex alignment are similar (‘ Algorithm: overview’). Foldseek-Multimer uses 
+the DBSCAN algorithm iteratively, with increasing radii, to identify superposition 
+clusters and the best-scoring valid cluster for computing the complex alignment 
+(Supplementary Fig. 1). e, Based on the best-scoring cluster, the complex TM 
+score is computed across all chain alignments between query and target.
+
+============================================================
+Page 3
+============================================================
+
+Nature Methods | Volume 22 | March 2025 | 469–472
+ 471
+Brief Communication https://doi.org/10.1038/s41592-025-02593-7
+and then applied Kpax only to them, detecting around 4.5 million pairs 
+of similar homomers (‘QSalign pairs’).
+Using 128 cores, Foldseek-MM then queried the clustered 3DCom-
+plexV7 (Methods) against itself, examining 57 billion pairs in 11 h. Apply-
+ing the same TM score ≥ 0.65 cutoff as QSalign, Foldseek-MM identified 
+98.6% of the homomeric pairs previously identified by QSalign and 
+found an additional 1.7 million similar homomeric pairs: ‘Foldseek-MM 
+Pairs’ (Fig. 2d). We used US-align for evaluating a randomly selected 
+sample of 10% of the Foldseek-MM pairs (Methods). US-align confirmed 
+98.2% of the sampled pairs and rejected 1.8% (TM score < 0.65). We 
+thus conclude that over 1.6 million of the homomeric pairs are new 
+discoveries by Foldseek-Multimer, owed to its ability to detect similar 
+complex structures below the twilight zone (Supplementary Fig. 5).
+In addition to developing a command-line tool, we extended the 
+Foldseek web server to support Foldseek-Multimer and visualize its 
+search results using the NGL viewer library18. The web server overlays 
+chain-to-chain assignments by using translucently colored protein 
+surfaces. Users can choose between Foldseek-Multimer’s alignment 
+modes, and apply taxonomic filters, restricting the search to specific 
+clades. T o accompany the web server with predicted structures, we 
+organized 297,570 multimer predictions from community efforts10,11,19– 21 
+into a single database (BFMD; Methods). BFMD is available in the web 
+server and for local use.
+In conclusion, we presented a strategy for complex-to-complex 
+alignment, which quickly identifies compatible sets of chain-to-chain 
+alignments by their superpositions. Demonstrated here on protein 
+complexes, the Foldseek-Multimer strategy can be extended to other 
+modalities, such as RNA and DNA complex structures, given a way to 
+align their individual subunits. T ogether, the unprecedented sensitivity 
+and speed offered by Foldseek-Multimer make it an essential tool for 
+investigating complex structures in the AlphaFold era.
+Online content
+Any methods, additional references, Nature Portfolio reporting sum-
+maries, source data, extended data, supplementary information, 
+acknowledgements, peer review information; details of author con -
+tributions and competing interests; and statements of data and code 
+availability are available at https://doi.org/10.1038/s41592-025-02593-7.
+References
+1. Levy, E. D. & Teichmann, S. Structural, evolutionary, and assembly 
+principles of protein oligomerization. Prog. Mol. Biol. Transl. Sci. 
+117, 25–51 (2013).
+2. van Kempen, M. et al. Fast and accurate protein structure search 
+with Foldseek. Nat. Biotechnol. 42, 243–246 (2024).
+3. Varadi, M. et al. AlphaFold protein structure database in 2024: 
+providing structure coverage for over 214 million protein 
+sequences. Nucleic Acids Res. 52, D368–D375 (2024).
+4. Zhang, C., Shine, M., Pyle, A. M. & Zhang, Y. US-align: 
+universal structure alignments of proteins, nucleic acids, and 
+macromolecular complexes. Nat. Methods 19, 1109–1115 (2022).
+5. Mukherjee, S. & Zhang, Y. MM-align: a quick algorithm for aligning 
+multiple-chain protein complex structures using iterative 
+dynamic programming. Nucleic Acids Res. 37, e83 (2009).
+6. Dey, S., Ritchie, D. W. & Levy, E. D. PDB-wide identification of 
+biological assemblies from conserved quaternary structure 
+geometry. Nat. Methods 15, 67–72 (2018).
+7. Levy, E. D., Pereira-Leal, J. B., Chothia, C. & Teichmann, S. A. 3D 
+complex: a structural classification of protein complexes. PLoS 
+Comput. Biol. 2, e155 (2006).
+8. Guzenko, D., Burley, S. K. & Duarte, J. M. Real time structural search 
+of the Protein Data Bank. PLoS Comput. Biol. 16, e1007970 (2020).
+9. Evans, R. et al. Protein complex prediction with AlphaFold-Multimer.  
+Preprint at bioRxiv https://doi.org/10.1101/2021.10.04.463034 
+(2022).
+10. Schweke, H. et al. An atlas of protein homo-oligomerization 
+across domains of life. Cell 187, 999–1010 (2024).
+11. Burke, D. F. et al. Towards a structurally resolved human protein 
+interaction network. Nat. Struct. Mol. Biol. 30, 216–225 (2023).
+12. Humphreys, I. R. et al. Computed structures of core eukaryotic 
+protein complexes. Science 374, eabm4805 (2021).
+13. Zhang, Y. & Skolnick, J. TM-align: a protein structure alignment 
+algorithm based on the TM-score. Nucleic Acids Res. 33,  
+2302–2309 (2005).
+14. Altae-Tran, H. et al. Uncovering the functional diversity of rare 
+CRISPR-Cas systems with deep terascale clustering. Science 382, 
+eadi1910 (2023).
+Target
+PDB100
+QueryPairwise
+Average runtime (s)
+Foldseek-Multimer TM score
+Database search
+No. of chains
+Foldseek-MM
+Foldseek-MM-TM
+2 4 8 16 24
+US-align
+US-align-fast
+N = 100100
+10
+1
+0.1
+10
+6
+10
+5
+10
+4
+10
+3
+10
+2
+10
+1.00.80.60.4
+0.4
+0.6
+0.8
+1.0
+r = 0.99
+r = 0.97
+a b c d
+US-align TM score
+100 100 18 85
+N = 142 124 42 5 14
+CF-MM pred.
+S. sp.
+JL08
+Tool & Time
+Foldseek-
+MM
+27 s
+Foldseek-
+MM-TM
+6 min
+US-align
+13
+days
+Hits
+Seq. ID < 19.8%
+P. aerug-
+inosa
+Best hit: 7xg4
+1 TM score ≥ 0.65
+Missed QSalign pairs
+(38.3%)
+4,461,552
+(98.6%)
+3DComplex homomers
+1,731,400
+Confirmed QSalign pairs
+Novel foldseek-MM pairs
+2
+426,347
+ #20.7037xg4 0.704
+ #10.7017xg2 0.702
+ #30.7017xg0 0.701
+ #40.6947xg3 0.695
+ #50.6677xg1 0.673
+62,951 (1.4%)
+Fig. 2 | Performance of Foldseek-Multimer. a, Query-length normalized TM 
+scores (target-normalized: Supplementary Fig. 2) computed for 931 pairs of 
+structurally similar complexes by US-align or Foldseek-Multimer. Both measures 
+correlated highly (Pearson’s r). b, Execution time based on the dataset used for 
+a. Complexes were binned by their number of chains; selected bins are shown 
+(for all bins, see Supplementary Fig. 3). Box plots depict quartiles, each point 
+is a complex pair (top) or complex (bottom), sample sizes are indicated as N, 
+and whiskers are drawn to the maximum (minimum) point within 1.5 times the 
+interquartile range over (under) the 75th (25th) percentile. Pairwise mode (top): 
+Foldseek-Multimer is 10–100 times faster than US-align due to efficient chain-
+to-chain alignment and superposition clustering. Database search (bottom): 
+complexes were queried against 3DComplexV7. Foldseek-Multimer is further 
+accelerated by its prefilter, making it 103–10 4 times faster. c, An AlphaFold-
+Multimer prediction of a part of a CRISPR–Cas ribonucleoprotein from an 
+environmental sample (top left) was queried by Foldseek-Multimer and US-align 
+against PDB100. Foldseek-MM-TM identified the same hits as US-align, while 
+being >3,000 times faster. These hits were the top ranks by Foldseek-MM (red) 
+with TM score > 0.5. Non-aligned components of 7xg4 (top right) are set as 
+transparent. d, Foldseek-Multimer was run on 57 billion pairs of complexes from 
+3DComplexV7. It discovered nearly all homomeric pairs previously identified 
+as similar by QSalign, and found an additional 1.7 million homomeric pairs 
+(Supplementary Fig. 5).
+
+============================================================
+Page 4
+============================================================
+
+Nature Methods | Volume 22 | March 2025 | 469–472 472
+Brief Communication https://doi.org/10.1038/s41592-025-02593-7
+15. Mirdita, M. et al. ColabFold: making protein folding accessible to 
+all. Nat. Methods 19, 679–682 (2022).
+16. Cui, N. et al. Type IV-A CRISPR-Csf complex: assembly, dsDNA 
+targeting, and CasDinG recruitment. Mol. Cell 83, 2493–2508 
+(2023).
+17. Ritchie, D. W., Ghoorah, A. W., Mavridis, L. & Venkatraman, V. 
+Fast protein structure alignment using gaussian overlap scoring 
+of backbone peptide fragment similarity. Bioinformatics 28, 
+3274–3281 (2012).
+18. Rose, A. S. et al. NGL viewer: web-based molecular graphics for 
+large complexes. Bioinformatics 34, 3755–3758 (2018).
+19. Schwede, T. et al. Outcome of a workshop on applications of protein 
+models in biomedical research. Structure 17, 151–159 (2009).
+20. Schmid, E. W. & Walter, J. C. Predictomes: a classifier-curated 
+database of AlphaFold-modeled protein–protein interactions. 
+Preprint at bioRxiv https://doi.org/10.1101/2024.04.09.588596 (2024).
+21. Jänes, J. et al. Predicted mechanistic impacts of human protein  
+missense variants. Preprint at bioRxiv https://doi.org/10.1101/2024. 
+05.29.596373 (2024).
+Publisher’s note Springer Nature remains neutral with regard  
+to jurisdictional claims in published maps and institutional  
+affiliations.
+Open Access This article is licensed under a Creative Commons 
+Attribution 4.0 International License, which permits use, sharing, 
+adaptation, distribution and reproduction in any medium or format, 
+as long as you give appropriate credit to the original author(s) and the 
+source, provide a link to the Creative Commons licence, and indicate 
+if changes were made. The images or other third party material in this 
+article are included in the article’s Creative Commons licence, unless 
+indicated otherwise in a credit line to the material. If material is not 
+included in the article’s Creative Commons licence and your intended 
+use is not permitted by statutory regulation or exceeds the permitted 
+use, you will need to obtain permission directly from the copyright 
+holder. To view a copy of this licence, visit http://creativecommons.
+org/licenses/by/4.0/.
+© The Author(s) 2025
+
+============================================================
+Page 5
+============================================================
+
+Nature Methods
+Brief Communication https://doi.org/10.1038/s41592-025-02593-7
+Methods
+Algorithm: overview
+Foldseek-Multimer examines all possible chain-to-chain pairings 
+between the compared complexes, using Foldseek (Fig. 1b ). It then 
+uses the fact that a structural alignment between two complexes, Q 
+and T, indicates a superposition: a set of rotations and translations, 
+which minimize the sum of squared distances between their aligned 
+residue pairs22. For simplicity, assume Q and T to be two structurally 
+similar dimers, consisting of the chains Q_A, Q_B and T_A, T_B, where 
+Q_A is similar to T_A and Q_B is similar to T_B. The physical meaning of 
+the complex-level structural similarity is that Q_A is positioned and 
+oriented relative to Q_B within Q in the same way that T_A is positioned 
+and oriented relative to T_B within T. Thus, the same superposition, 
+that is, the same set of rotations and translations, would minimize 
+the distance between Q_A and T_A as well as the distance between 
+Q_B and T_B. In other words, all individual chain-to-chain superposi -
+tions (for example, the one between Q_A and T_A) are equal to one 
+another and to the complex-to-complex superposition. Therefore, 
+a set of chain-to-chain alignments is compatible and can define a 
+complex-to-complex alignment, only if all chain-to-chain superposi-
+tions computed from that set are equal. Therefore, Foldseek-Multimer 
+computes for each chain-to-chain alignment a vector, representing 
+its superposition (Fig. 1c). Next, it uses DBSCAN23 for clustering these 
+vectors to identify compatible sets of chain-to-chain alignments, which 
+share the same superposition and define valid complex alignments 
+(Fig. 1d and Supplementary Fig. 1). Once complex alignments are identi-
+fied, Foldseek-Multimer computes their TM score24 and reports them 
+(Fig. 1e).
+Algorithm: input
+Foldseek-Multimer allows for searching one or more query protein 
+complex structures against a target complex structure, a database  
+of complex structures or a database of clustered structures. Structures 
+can be provided in PDB/mmCIF format or as a Foldseek-formatted  
+database. Formatting structures is possible using the createdb  
+command.
+Algorithm: chain-to-chain alignments
+By utilizing Foldseek, Foldseek-Multimer offers two main modes for 
+chain-to-chain structure comparison. The default mode, 3Di+AA, 
+encodes structures as sequences over a 20-state 3Di alphabet, as  
+fully described by ref. 2 . Additionally, chain-to-chain alignments  
+can be computed using TM-align 13, which is a global, albeit slower,  
+alignment method. During database search, a prefilter, which is based 
+on the 3Di+AA mode, allows for fast removal of most chain pairs, con-
+tinuing to compute chain-to-chain alignments only on promising 
+candidates.
+Algorithm: chain-to-chain superposition vectors
+Given a chain-to-chain alignment, Foldseek-Multimer computes the 
+superposition of the target chain onto the query chain, using nine 
+rotations (U) and three translations (T). In preparation for aligning 
+complex structure Q and complex structure T, Foldseek-Multimer 
+creates a matrix with 12 columns, whose rows are the superposition 
+vectors, computed from all chain-to-chain alignments, belonging to 
+Q and T. The mean and the standard deviation (s.d.) of each column are 
+then used to compute the coefficient of variation (CV = s.d./mean) of 
+the column and exclude less-informative columns (CV < 0.1; Supple-
+mentary Table 1: the effect of this parameter on Foldseek-Multimer’s 
+performance). If the mean value of the column is <1, the s.d. value is 
+used instead of the CV for the exclusion criterion. Finally, the retained 
+columns undergo normalization since they can have different scales. 
+T o that end, Foldseek-Multimer subtracts from each column its mean 
+and divides it by its s.d. We denote the resulting reduced and normal-
+ized matrix as supQT.
+Algorithm: chain-to-chain clustering
+DBSCAN is used iteratively for clustering the rows of supQT as it doesn’t 
+require knowing the number of clusters a priori. The stages of this 
+procedure are described below and demonstrated on a small example 
+in Supplementary Fig. 1.
+Initialization. The Euclidean distances between all row pairs in supQT 
+are computed and the minimum (minDist) initializes the parameter 
+epsilon. The biggest cluster(s) encountered during the procedure 
+are recorded in a candidate list alongside their size (maxClusterSize), 
+which is initialized to 0.
+The DBSCAN iteration. For each supQT row, all rows within a radius 
+of epsilon from it, are defined as its ‘neighbors’ . Then, all rows, which 
+have at least one more neighbor (at least two neighbors, including 
+itself) are considered as ‘core points’ and the rest as ‘non-core points’ . 
+Next, a core point is selected at random to start the first cluster. All 
+its core-point neighbors are added to the first cluster. Each added 
+core-point neighbor also adds its core-point neighbors and so on, until 
+no more core points can be added to the first cluster. Then, all non-core 
+points, which are neighbors of members of the first cluster, are added 
+to it as well (without adding their neighbors). The second cluster is 
+constructed similarly, operating on the remaining unclustered points.
+Cluster validity and rescuing by nearest neighbors.  During the 
+DBSCAN iteration, after each cluster is computed, Foldseek-Multimer 
+evaluates its validity. If a cluster includes the same chain in multiple 
+chain-to-chain alignments, Foldseek-Multimer attempts to rescue it 
+by selecting a compatible subgroup of points (that is, chain-to-chain 
+alignments) from that cluster. T o that end, points are selected for the 
+subgroup in the order of their distance to the core point, which was 
+used to initiate the cluster. Selection for the subgroup is stopped once 
+the process encounters a point that includes a chain, which was already 
+added by a previous point.
+At each DBSCAN iteration, valid clusters which are at least as big as 
+maxClusterSize are added to the candidate list. The value of maxCluster-
+Size is updated each time a bigger cluster is encountered and all previ-
+ously added clusters are removed from the list owing to being smaller.
+Iterativity.  Next, the value of the radius epsilon is increased by a 
+delta of 0.1 (Supplementary Table 1: the effect of this parameter on 
+Foldseek-Multimer’s performance) and a new DBSCAN iteration starts, 
+potentially forming new clusters. If all new clusters are smaller than 
+maxClusterSize, the procedure stops. Otherwise, the candidate list and 
+maxClusterSize will be updated with the iteration’s clusters and epsilon 
+will increase again, up to a maximal value of the distance between the 
+two furthest points (maxDist).
+Early stop condition. Let CQ and CT be the number of chains in Q and 
+T, respectively. Without loss of generality, assume CQ < CT. If maxClus-
+terSize is equal CQ, then no bigger valid cluster exists. Since there is a 
+total of CQ × CT chain-to-chain alignments, the number of clusters in 
+the candidate list cannot exceed CT once maxClusterSize is equal to CQ. 
+Foldseek-Multimer checks these two conditions and avoids unneces-
+sary DBSCAN iterations if they are met.
+Discovered clusters. At the end of the iterative DBSCAN procedure, the 
+biggest valid clusters are returned. Each of them is equivalent to a set 
+of compatible chain-to-chain alignments with a similar superposition 
+that together define a complex alignment between Q and T.
+Algorithm: TM-score computation
+TM scores are computed for the complex alignment derived from each 
+of the valid clusters found for a Q–T complex pair as follows. First, the 
+chains of complex Q are concatenated to each other in some order. 
+
+============================================================
+Page 6
+============================================================
+
+Nature Methods
+Brief Communication https://doi.org/10.1038/s41592-025-02593-7
+Given the concatenation order of the chains in Q, Foldseek-Multimer 
+concatenates the chains of complex T, in the order of their pairwise 
+matches to the chains of Q, as defined by the cluster. Then, the TM 
+score between the concatenated Q and concatenated T is computed the 
+same way Foldseek computes it for single-chain pairwise alignments, 
+using the Cα coordinate vectors of both chains (concatenated chains 
+in this case). Using this computation, all complex alignments a given 
+query complex Q has with a specific target T and with all other target 
+complexes can be ranked and reported by their TM score.
+Algorithm: utilizing clustered databases
+T o further accelerate Foldseek-Multimer, we aimed to reduce the redun-
+dancy in the target database, an approach, which is also adopted by 
+TM-search25. T o that end, we introduced a new capability to Foldseek, 
+which allows it to efficiently search through clustered databases in 
+MMseqs2 or Foldseek format (for example, PDB100, see below). If the 
+input has M cluster representatives and N cluster members (M < N), 
+Foldseek will first search (prefilter + alignment) against the M repre-
+sentatives, finding candidates below a specific E-value threshold (the 
+default value of 10 was used in this study). Extending to promising 
+clusters only, the alignment step will then be carried out on all cluster 
+members of the candidates. Foldseek-Multimer will use the alignment 
+results of all extended clusters for computing superposition matrices 
+and the following procedure steps, as described above.
+The 3DComplex database and QSalign comparisons
+For the analyses presented in Fig. 2a,b,d, we downloaded the 3DCom-
+plex database version 7 (3DComplexV7 DB; see ‘Data availability’). In 
+brief, this database holds 238,965 structures, consisting of 557,146 
+chains and was created from the ‘Biological Units/Assemblies’ down-
+loaded from the PDB using the method described previously7. Before 
+this study, QSalign6 had been applied to 3DComplexV7 DB and yielded 
+a list of 57,953,513 compared structural pairs.
+Similar pairs benchmark
+Dataset. Starting with the list of 57,953,513 QSalign-compared pairs, we 
+selected entries with varying numbers of subunits (from 2 to 24). For 
+each size, the criteria for selection were that the TM score computed by 
+Kpax17 was greater than 0.8, and that pairs of homomers had less than 
+80% sequence identity. If more than 100 pairs matched the criteria, 
+only the first 100 were selected, resulting in a total of 931 complex pairs 
+included in the benchmark.
+Runtime evaluation. Performance was measured on a server with a 1x 
+AMD EPYC 7702P 64-core CPU and 1 TB RAM, using a single core. The 
+queries for the time measurements in Fig. 2b and Supplementary Fig. 3 
+were the 677 unique complexes associated with the 931 pairs. Owing 
+to its high computational demand, the runtime of US-align on these 
+677 complexes against 3DcomplexV7 was extrapolated from running 
+against 1,000 randomly sampled 3DcomplexV7 entries. Reporting the 
+average over the number of cases Nc = 142, 109, 124, 18, 101, 7, 42, 8, 41, 
+44, 17, 5, 5, 14 for each number of chains c = 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14,  
+16, 18, 24: avg =
+1
+Nc
+∑
+Nc
+i=1 t(qi, sample)
+238,965
+1,000
+. Foldseek-Multimer was run  
+against the full database, without extrapolation.
+Environmental CRISPR–Cas
+The PDB100 database. A version of the PDB, termed PDB100, was used 
+to search for structural homologs of an environmental CRISPR–Cas as 
+well as to measure the runtimes of Foldseek-Multimer and US-align. 
+PDB100 was first introduced by ref. 2, but further developed in this study, 
+as described here. First, PDB, containing the asymmetric unit of 207,937 
+entries, consisting of 1,047,615 chains, was downloaded in November 
+2023 (see ‘Data availability’). Of these, 11,901 entries were associated 
+with more than one structural model (for example, the NMR experiment 
+2KOX). In total, 426,347 structural models were associated with the PDB 
+entries. Next, all chains were clustered using Foldseek (parameters:  
+-c 0.95 --min-seq-id 1.0), resulting in 343,785 redundancy-reduced 
+representatives. In contrast to van Kempen et al. 2, PDB100 is now a  
+cluster database, which holds the representatives alongside informa-
+tion to associate them to their cluster chains and structural models.  
+PDB100 is updated regularly and is available through the Foldseek web 
+server and can be downloaded using the ‘databases’ command.
+Complex structure prediction.  Four Sulfitobacter sp. JL08 protein  
+sequences, identified as CRISPR–Cas type IV-A components by Altae- 
+Tran et al.14—Csf1, Csf2, Csf3 and Cas6—were obtained from the plas -
+mid map ‘pHS1068 NZ_CP025815 DinG HNH proteins (Escherichia coli 
+codon optimized) CRISPR array in pACYCDuet-1 with Lac promoters.
+gb’ , released by the authors. Following the reported stoichiometry of 
+the CRISPR–Cas type IV-A core complex 26, we constructed an input 
+file for ColabFold-AlphaFold-Multimer 15 with eight chains: 1xCsf1 + 
+5xCsf2 + 1xCsf3 + 1xCas6. When examining the structure, we noticed 
+that AlphaFold-Multimer did not predict an interaction between Csf1  
+and Cas6 and the rest of the complex, so we omitted them and 
+re-predicted the structure: 5xCsf2 + 1xCsf3. Comparing the four 
+sequences of Sulfitobacter sp. JL08 to protein nr 27 was performed 
+using the blastp web server (February 2024).
+Runtime evaluation. Performance was measured on a server with a 1x 
+AMD EPYC 7702P 64-core CPU and 1 TB RAM, using a single core. Owing 
+to its high computational demand, the total runtime was extrapolated 
+when measuring US-align on the Sulfitobacter sp. JL08 structure  
+against the PDB100, using five samples: avg =
+1
+5
+∑
+5
+i=1 t(q, samplei)
+426,347
+1,000
+. 
+Foldseek-Multimer was run against the full database, without extrapola-
+tion. For the MacBook runtime measurements, we used a 13-inch  
+MacBook Pro (M1; 2020; model A2338) with 16 GB RAM.
+Comparison to QSalign on 3DComplexV7
+QSalign pairs. Starting with the list of 57,953,513 QSalign-compared 
+pairs, high-scoring homomeric pairs (maximum TM score ≥ 0.65) 
+were selected, excluding pairs with a PISA structure. This resulted 
+in 4,524,503 structurally similar unique homomeric pairs, which we 
+denoted ‘QSalign pairs’ .
+A clustered 3DComplexV7.  The 557,146 chains of 3DComplexV7  
+were clustered using Foldseek (parameters: -c 0.99 --min-seq-id 
+0.9 -e 0.00001), resulting in 142,957 redundancy-reduced repre-
+sentatives. This procedure took 18 s, using 64 threads.
+Foldseek-MM all-versus-all search of 3DComplexV7. During this 
+search, all temporary files were kept in memory and 128 cores were 
+used (2 × AMD EPYC 7742). The entire search finished in 10 h and 23 min. 
+Most of the time was spent in the module for matching chains, which 
+took 7 h and 32 min.
+Evaluation of ‘Foldseek-MM pairs’. About 1.7 million pairs of homo-
+meric complexes were detected only by Foldseek-MM as similar. Since 
+running US-align over all pairs is prohibitively slow, we randomly 
+selected 160,252 pairs (around 10% of all pairs) and computed their 
+alignment using US-align. For 2,844 of these (1.8%), US-align reported 
+a TM score < 0.65, which we used as an estimate for the false-positive 
+rate among the full set of novel ‘Foldseek-MM pairs’ . Around 157,391 
+pairs (98.2%) were confirmed as matches by US-align and the rest  
+(17 pairs, <0.0001%) were aligned as monomers.
+The BFMD resource
+In an effort to generate a large multimer database, we gathered 297,570 
+multimer predictions, consisting of 597,640 chains from several 
+
+============================================================
+Page 7
+============================================================
+
+Nature Methods
+Brief Communication https://doi.org/10.1038/s41592-025-02593-7
+community efforts. These were turned into a clustered Foldseek 
+database using the parameters: -c 0.95 --min-seq-id 1.0 -e 
+0.00001, resulting in 51,757 redundancy-reduced representatives. All 
+predictions’ accessions are prefixed by the resource name. Multimers 
+extracted from the ModelArchive19, all-versus-all prediction of a set 
+of human genome maintenance proteins Predictomes20, LevyLab 
+atlas of predicted homomers10, protein–protein prediction from the 
+Human Reference Interactome 28 and the Human Protein Complex 
+Map29HuIntAF2 (ref. 11) and ProtVar, predicted multimers as part 
+of an effort to understand missense variance21. The BFMD is available 
+through the Foldseek web server and is downloadable as a standalone 
+database using the ‘databases’ module.
+Tool commands and arguments
+Foldseek-MM commit c27a629 (default, using 3Di+AA):
+foldseek easy-complexsearch query.pdb
+target.pdb/targetDB result tmp –threads 1
+Foldseek-MM-TM commit c27a629 (using tmalign):
+foldseek easy-complexsearch query.pdb
+target.pdb/targetDB result tmp –threads 1
+–alignment-type 1
+Additionally, the flag ‘--exhaustive-search 1’ was used for the 
+benchmark of similar pairs and the flag ‘--cluster-search 1’ was 
+used when using a clustered db. For database searches, we pre-indexed 
+the database using ‘createindex targetDB’ and kept it in memory. 
+We set --db-load-mode to 2 in easy-complexsearch, to indicate that 
+the pre-indexed database is already in memory. During database search, 
+Foldseek-Multimer can include or reject monomeric targets in the 
+reference database using the --monomer-include-mode parameter. 
+For this study, we set the parameter to reject all monomer matches.
+US-align version 20220924:
+US-align query.pdb target.pdb -mm 1 -ter 0 -mol prot
+Additionally, the flag ‘-fast’ was set for during runtime assess-
+ments in Fig. 2b. For speed measurements, we kept the PDB/mmCIF 
+files in memory to avoid input/output-related bottlenecks.
+Reporting summary
+Further information on research design is available in the Nature 
+Portfolio Reporting Summary linked to this article.
+Data availability
+The benchmarking and 3DComplexV7 data are available via Zenodo 
+at https://doi.org/10.5281/zenodo.13121434 (ref. 30) and the PDB via 
+https://files.wwpdb.org/pub/pdb/data/structures/all/.
+Code availability
+Foldseek-Multimer and its web server are GPLv3-licensed free open- 
+source software. The source code and binaries for Foldseek-Multimer 
+can be downloaded at https://github.com/steineggerlab/foldseek/. 
+The analysis scripts are available at https://github.com/steineggerlab/
+foldseek-multimer-analysis/ . The web server is available at https://
+search.foldseek.com/  and its source code at https://github.com/
+soedinglab/mmseqs2-app/.
+References
+22. Kabsch, W. A solution for the best rotation to relate two sets of 
+vectors. Acta Crystallogr. A 32, 922–923 (1976).
+23. Ester, M., Kriegel, H. -P., Sander, J. & Xu, X. A density-based 
+algorithm for discovering clusters in large spatial databases 
+with noise. In KDD’96: Proc. Second International Conference on 
+Knowledge Discovery and Data Mining 226–231 (AAAI, 1996).
+24. Zhang, Y. & Skolnick, J. Scoring function for automated assessment 
+of protein structure template quality. Proteins 57, 702–710 (2004).
+25. Liu, Z., Zhang, C., Zhang, Q., Zhang, Y. & Yu, D. -J. TM-search: an 
+efficient and effective tool for protein structure database search. 
+J. Chem. Inf. Model. 64, 1043–1049 (2024).
+26. Taylor, H. N. et al. Positioning diverse type IV structures and 
+functions within class 1 CRISPR-Cas systems. Front. Microbiol. 12, 
+671522 (2021).
+27. Sayers, E. W. et al. Database resources of the national center  
+for biotechnology information in 2023. Nucleic Acids Res. 51, 
+D29–D38 (2023).
+28. Luck, K. et al. A reference map of the human binary protein 
+interactome. Nature 580, 402–408 (2020).
+29. Drew, K., Wallingford, J. B. & Marcotte, E. M. hu.MAP 2.0: 
+integration of over 15,000 proteomic experiments builds a global 
+compendium of human multiprotein assemblies. Mol. Syst. Biol. 
+17, e10016 (2021).
+30. Kim, W. et al. Foldseek Multimer. Zenodo https://doi.org/10.5281/
+zenodo.13121434 (2024).
+Acknowledgements
+We thank H. Kim for helping with designing Fig. 1, Y. Hwan Kim for 
+suggesting the name Foldseek-Multimer and D. Burstein for his 
+feedback on the CRISPR–Cas example. We thank the EMBL-EBI for 
+releasing the ‘EMBL-EBI Icon fonts for the life sciences’ that are 
+used in the web server. M.S. acknowledges support by the National 
+Research Foundation of Korea (grants 2020M3-A9G7-103933, 
+2021-R1C1-C102065, 2021-M3A9-I4021220 and RS-2024-00396026), 
+Samsung DS research fund, Creative-Pioneering Researchers Program 
+and AI-Bio Research Grant through Seoul National University. M.M. 
+acknowledges support from the National Research Foundation of 
+Korea (grant RS-2023-00250470). E.D.L. acknowledges support from 
+the European Research Council under the European Union’s Horizon 
+2020 research and innovation program (grant agreement no. 819318).
+Author contributions
+W.K., J.S. and M.S. designed the Foldseek-Multimer algorithm. W.K., 
+M.M. and M.S. developed the software. M.M. and C.L.M.G. developed 
+the Foldseek-Multimer web server. E.D.L. and H.S. designed the 
+comparison to QSalign, provided 3DComplexV7 and applied QSalign 
+to it. E.L.K. developed the CRISPR–Cas example. W.K., E.L.K. and 
+M.S. designed the figures, performed the benchmarks and wrote the 
+manuscript, with contributions from all authors.
+Funding
+Open access funding provided by University of Geneva.
+Competing interests
+M.S. acknowledges outside interest in Stylus Medicine. The remaining 
+authors declare no competing interests.
+Additional information
+Supplementary information The online version contains supplementary 
+material available at https://doi.org/10.1038/s41592-025-02593-7.
+Correspondence and requests for materials should be addressed to 
+Emmanuel D. Levy or Martin Steinegger.
+Peer review information Nature Methods thanks Arne Elofsson and the 
+other, anonymous, reviewer(s) for their contribution to the peer review 
+of this work. Primary Handling Editor: Arunima Singh, in collaboration 
+with the Nature Methods team. Peer reviewer reports are available.
+Reprints and permissions information is available at  
+www.nature.com/reprints.
+
+============================================================
+Page 8
+============================================================
+
+
+
+============================================================
+Page 9
+============================================================
+
+
+
+============================================================
+Page 10
+============================================================
+

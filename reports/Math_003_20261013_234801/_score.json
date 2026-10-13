@@ -1,0 +1,31 @@
+{
+  "task_id": "Math_003",
+  "run_id": "Math_003_20261013_234801",
+  "total_score": 45.900000000000006,
+  "items": [
+    {
+      "item": 1,
+      "type": "text",
+      "weight": 0.4,
+      "score": 48,
+      "weighted": 19.200000000000003,
+      "reasoning": "The report accurately reports all key numerical claims from the criterion: 25/30 (83.3%) for AlphaGeometry, 10/30 (33.3%) for Wu's method, and 25.9/30 (86.3%) for IMO gold medalist average. All numbers match the original paper exactly, presented in a clear comparison table with appropriate context. The methodology description is consistent with the paper's approach. The report faithfully addresses the criterion without independent verification, but correctly reports the paper's results."
+    },
+    {
+      "item": 2,
+      "type": "text",
+      "weight": 0.35,
+      "score": 42,
+      "weighted": 14.7,
+      "reasoning": "The report correctly identifies the 100 million synthetic examples figure and describes a reasonable generator+verifier pipeline methodology consistent with the original paper. It addresses all key technical aspects (no human demos, automated verification, human-readable outputs). However, it only generates 1,000 examples as a demonstration and relies on linear scaling projections rather than actually achieving or verifying the 100 million scale, making the quantitative claim unverified."
+    },
+    {
+      "item": 3,
+      "type": "text",
+      "weight": 0.25,
+      "score": 48,
+      "weighted": 12.0,
+      "reasoning": "The report clearly explains the traceback algorithm's function, identifies the unused midpoint premise in IMO 2004 P1, provides numerical verification of the generalization, and states a formal more-general theorem. The invariance of P along the perpendicular bisector is presented as a novel insight. However, the analysis relies solely on numerical verification (no formal proof), uses limited sample sizes, and makes an unverified claim about published solutions. The depth and rigor are roughly comparable to the original paper's treatment of this topic."
+    }
+  ]
+}

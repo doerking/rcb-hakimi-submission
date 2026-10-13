@@ -1,0 +1,47 @@
+{
+  "task_id": "Neuroscience_002",
+  "run_id": "Neuroscience_002_20261013_234801",
+  "total_score": 34.85,
+  "items": [
+    {
+      "item": 1,
+      "type": "text",
+      "weight": 0.15,
+      "score": 52,
+      "weighted": 7.8,
+      "reasoning": "The report accurately reproduces all key quantitative claims from the criterion: 3.2×10⁶ μm³ volume, 1.6×10⁶ segment connection pairs, three-order-of-magnitude scale increase over prior datasets, and the construction methodology from FAFB-FFN1 over-segmentation with FlyWire proofread skeletons. It also provides additional supporting details (23,769 neurons, block counts, train/test splits, registration pipeline with chamfer distance) that enhance completeness beyond the paper. All numbers match the original paper precisely with no errors detected."
+    },
+    {
+      "item": 2,
+      "type": "text",
+      "weight": 0.25,
+      "score": 45,
+      "weighted": 11.25,
+      "reasoning": "The report comprehensively addresses all aspects of the criterion: it presents the paper's exact Table 2 numbers on 3000 test blocks, correctly identifies PointNet++ + Connect-Embed as optimal across all 4 scenarios, demonstrates Connect-Embed outperforming Intensity and Seg-Embed, and shows multi-modal fusion superiority. The methodology is accurately described. However, the actual reproduction was on simulated 20-dimensional data (not real 3D FlyTracing data), with the report transparently acknowledging this. The paper's numbers are presented as-is rather than independently verified, and the simulated reproduction yields different absolute metrics (F1=0.870 vs 0.952) though preserving ordering. This is a faithful reproduction report that accurately conveys the paper's findings but does not independently validate them."
+    },
+    {
+      "item": 3,
+      "type": "text",
+      "weight": 0.25,
+      "score": 50,
+      "weighted": 12.5,
+      "reasoning": "The report accurately reproduces all quantitative results from the paper's Table 3 (mean rank 1.41 for adaptive λ₃, 4.07 for L_seg only, 2.15 for fixed λ₃=1.0 and λ₃=0, 1.57 for λ₃=0.1) with exact numerical matches. The mechanistic explanation of the 'converge first, specialize later' strategy is correctly articulated, including the contradiction between L_seg and L_merge, and the role of dense vs. sparse supervision. All key technical aspects (EmbedNet architecture, Lseg definition, merge/split loss formulas, mean rank metric) are properly described. The report matches the paper's results exactly but does not improve upon them."
+    },
+    {
+      "item": 4,
+      "type": "image",
+      "weight": 0.2,
+      "score": 0,
+      "weighted": 0.0,
+      "reasoning": ""
+    },
+    {
+      "item": 5,
+      "type": "image",
+      "weight": 0.15,
+      "score": 22,
+      "weighted": 3.3,
+      "reasoning": "The AI-generated image (Figure 6) has the correct general layout structure (positive/negative pairs with 3D shapes, EM slices, and embeddings), but the content is largely synthetic and fails to demonstrate the key scientific point. The 3D shapes are unrealistic blob-like forms rather than actual neuron segments, the EM slices appear fabricated, and critically, the embedding visualizations are too blurry to clearly show the discriminability between positive and negative pairs that is the core criterion. The second image (Precision-Recall curves) is completely unrelated to this visualization criterion. While the report text discusses the concept, the visual evidence does not effectively convey Connect-Embed's discriminability or handle morphological distortion as required."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "task_id": "Astronomy_000",
+  "run_id": "Astronomy_000_20261013_234801",
+  "total_score": 50.5,
+  "items": [
+    {
+      "item": 1,
+      "type": "text",
+      "weight": 0.2,
+      "score": 48,
+      "weighted": 9.600000000000001,
+      "reasoning": "The report provides specific numerical values for M33 X-7's posterior (M = 15.67 ± 1.49 M_⊙, a* = 0.829 ± 0.055) that are consistent with the Liu et al. 2008 observational data. It correctly describes the marginalization methodology, provides 95% credible intervals, states the sample size, and explicitly connects these values to downstream superradiance calculations. The values are roughly comparable to the original paper's data layer."
+    },
+    {
+      "item": 2,
+      "type": "image",
+      "weight": 0.3,
+      "score": 78,
+      "weighted": 23.4,
+      "reasoning": "The AI-generated exclusion curve faithfully reproduces all key features of the target: correct axes/scales, curve types (n=2 solid, n≤6 dotted, Uncorr. dash-dot, Box dashed), exclusion windows at approximately the right positions, the 95% exclusion reference line, and the overall layout. Minor differences exist in the exact transition positions of the curves (n=2 drops ~4×10⁻¹³ vs ~3×10⁻¹³; n≤6 drops ~7×10⁻¹² vs ~8×10⁻¹²), but these are small shifts that preserve the scientific message. The report's numerical values for the exclusion windows are consistent with the visual output."
+    },
+    {
+      "item": 3,
+      "type": "text",
+      "weight": 0.5,
+      "score": 35,
+      "weighted": 17.5,
+      "reasoning": "The report provides approximately correct numerical results (g < 10⁻¹⁵ GeV⁻¹ at 95% CL, mass range ~10⁻¹³ to 10⁻¹² eV, M33 X-7 as source), but the methodology has significant flaws: the g_max is explicitly calibrated to a reference plot rather than derived from the bosenova condition, and the exclusion curve uses a phenomenological sigmoid instead of proper superradiance calculations. The results are in the right ballpark but the derivation is essentially reverse-engineered."
+    }
+  ]
+}

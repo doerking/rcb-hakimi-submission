@@ -1,0 +1,10 @@
+{
+ "task_id": "Math_001",
+ "run_id": "Math_001_20261013_232838",
+ "agent_name": "Hakimi",
+ "model": "pi+Hakimi (deepseek-flash, sensenova-6.8-flash-lite)",
+ "status": "completed",
+ "timestamp": "20261014_013043",
+ "duration_seconds": 852720,
+ "duration_source": "estimated_from_file_timestamps"
+}

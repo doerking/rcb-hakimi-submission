@@ -1,0 +1,15 @@
+{
+  "lam": 4.438774948348783,
+  "L": 100.00000000000014,
+  "f0": 872.117924649071,
+  "fstar": 311.11678770039623,
+  "n_iter": 200,
+  "final_baseline": 311.11678770039634,
+  "final_accel": 311.11678770039623,
+  "iters_1pct_baseline": 26,
+  "iters_1pct_accel": 11,
+  "iters_10pct_baseline": 13,
+  "iters_10pct_accel": 8,
+  "sparsity_accel": 88,
+  "sparsity_true": 100
+}
